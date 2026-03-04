@@ -3,18 +3,22 @@
 YeAST is an automated virtual screening pipeline for ligand-receptor docking, designed to streamline compound prioritization and interaction analysis.
 
 ---
-
+> **Note:** Any terminal commands on Windows must be executed inside WSL.
 ## Requirements
 
 - Install Docker CLI or Docker Desktop (Docker Desktop required for Windows)  
 - Install Ubuntu WSL (Windows only)  
-- Download the YeAST repository: [GitHub link](https://github.com/halgocom/yeast.git)  
+- Download the YeAST repository
+```bash
+git clone https://github.com/halgocom/yeast.git
+```  
+  
 
 ---
 
 ## Installation
 
-> **Note:** Any terminal commands on Windows must be executed inside WSL.
+
 
 1. Navigate to the YeAST repository folder.  
 2. Run the build script:  
