@@ -1,0 +1,99 @@
+Bootstrap: docker
+From:  mambaorg/micromamba:2.3.1-ubuntu24.04
+Stage: build
+
+
+
+%setup 
+    #install and bin folders 
+    mkdir ${SINGULARITY_ROOTFS}/home/screener
+    mkdir ${SINGULARITY_ROOTFS}/home/screener/app
+    
+%files
+    #copy needed files
+    ./app /home/screener
+
+%environment
+    #set enviroment var for screener
+    export APP_PATH=/home/screener
+    export FILE_PATH=/home/screener
+    export MODULE_PATH=/home/screener/modules
+    export HPC=True
+
+%post 
+    #install dependencies
+    apt-get update && apt-get install -y \
+        build-essential \
+        autoconf \
+        curl \
+        wget \
+        nano \
+        patchelf \
+        git \
+        tcsh\
+        ninja-build \
+        meson \
+        libxrender1 \
+        libxext6
+
+
+    #set env variables  in .env file
+    echo "$FILE_PATH" >> /home/screener/app/env/.env
+    echo "$APP_PATH" >> /home/screener/app/env/.env
+    echo $MODULE_PATH >> /home/screener/app/env/.env
+    echo "$HPC" >>  /home/screener/app/env/.env
+
+    #make script to run simulation executable
+    chmod +x /home/screener/app/screener_sing.sh
+
+    micromamba create -f /home/screener/app/env/screener.yml
+    micromamba create -f /home/screener/app/modules/pxdock/pxdock.yml
+
+    micromamba run -n pxdock pip install --use-pep517 git+https://github.com/bytedance/Protenix-Dock.git
+
+    #patch executable to work in docker
+    patchelf --set-rpath '$ORIGIN:/opt/conda/envs/pxdock/lib' /opt/conda/envs/pxdock/lib/python3.10/site-packages/pxdock/_protenix_dock*.so
+    patchelf --set-rpath '$ORIGIN:/opt/conda/envs/pxdock/lib' /opt/conda/envs/pxdock/lib/python3.10/site-packages/pxdock/libdock.so
+    
+    micromamba create -f /home/screener/app/modules/CCTBX/cctbx.yml
+    wget -P /home/screener/app/install/files/monomer --no-check-certificate --content-disposition https://github.com/cctbx/cctbx_project/releases/download/v2025.10/chem_data-2025.10-pyhe0d8492_0.conda
+    micromamba install -n CCTBX /home/screener/app/install/files/monomer/chem_data-2025.10-pyhe0d8492_0.conda
+
+    #compile autogrid
+    #git clone https://github.com/ccsb-scripps/AutoGrid
+    #cd AutoGrid
+    #meson setup builddir
+    #cd builddir
+    #meson compile
+    #cp /home/tmp/Autogrid/builddir/autogrid4 /home/screener/bin/autogrid4
+    #rm -rf /home/tmp/Autogrid
+
+    #compile AD4
+    #wget -P /home/screener/app/app/install https://autodock.scripps.edu/wp-content/uploads/sites/56/2021/10/autodocksuite-4.2.6-src.tar.gz
+    #tar -xvzf /home/screener/app/app/install/autodocksuite-4.2.6-src.tar.gz -C /home/screener/app/app/install
+    #cd /home/screener/app/app/install/src
+    #autoreconf -i
+    #mkdir /home/screener/app/app/install/src/ad4
+    #cd /home/screener/app/app/install/src/ad4
+    #../configure
+    #make
+    
+    #flush installation files 
+    rm -rf /home/screener/app/install/files
+%test
+    grep -q NAME=\"Ubuntu\" /etc/os-release
+    if [ $? -eq 0 ]; then
+        echo "Container base is Ubuntu as expected."
+    else
+        echo "Container base is not Ubuntu."
+        exit 1
+    fi
+
+%runscript
+    $PWD/home/screener/app/screener_sing.sh
+%labels
+    Author Vincenzo Sunna
+    Version v0.1
+
+%help
+    This container carries the enviroment and scripts to execute a virtual screening with screener on CINECA clusters
