@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Generating certificates..."
-step ca bootstrap --ca-url=https://sshproxy.hpc.cineca.it --fingerprint 2ae1543202304d3f434bdc1a2c92eff2cd2b02110206ef06317e70c1c1735ecd
+step ca bootstrap --ca-url=https://sshproxy.hpc.cineca.it --fingerprint MY_PRINT
 eval $(ssh-agent)
 read -p "email:": email;
 step ssh login $email  --provisioner cineca-hpc
