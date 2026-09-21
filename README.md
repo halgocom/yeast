@@ -8,7 +8,7 @@
 
 <br>
 
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
 ![AutoDock Vina](https://img.shields.io/badge/AutoDock%20Vina-Docking-4C9AFF?style=for-the-badge)
 ![GROMACS](https://img.shields.io/badge/GROMACS-Molecular%20Dynamics-2E8B57?style=for-the-badge)
@@ -32,14 +32,14 @@ Instead of treating docking, molecular dynamics and energetic analysis as separa
 ```mermaid
 flowchart LR
 
-    A["🧪 Ligand Library"] --> B["⚗️ Ligand Preparation"]
-    B --> C["🧬 Receptor Preparation"]
-    C --> D["📦 Docking Box"]
-    D --> E["🔬 AutoDock Vina"]
-    E --> F["🎯 Selected Poses"]
-    F --> G["🌀 GROMACS MD"]
-    G --> H["📈 MM/GBSA"]
-    H --> I["📊 Energy Estimates"]
+    A["🧬 Receptor Preparation"] --> B["⚗️ Ligand Preparation"]
+
+    B --> C["📦 Docking Box"]
+    C --> D["🔬 AutoDock Vina"]
+    D --> E["🎯 Selected Poses"]
+    E --> F["🌀 GROMACS MD"]
+    F --> G["📈 MM/GBSA"]
+    G --> H["📊 Energy Estimates"]
 
     classDef ligand fill:#E8F1FB,stroke:#3776AB,color:#17324D
     classDef docking fill:#EAF3FF,stroke:#4C9AFF,color:#17324D
@@ -56,7 +56,7 @@ The screening environment and the molecular-dynamics environment are kept separa
 
 ---
 
-## ✨ What YeAST does
+## ✨ Workflow
 
 | Stage                       | Purpose                                                                   |
 | --------------------------- | ------------------------------------------------------------------------- |
@@ -69,9 +69,149 @@ The screening environment and the molecular-dynamics environment are kept separa
 | 🐳 **Containers**           | Reproducible and separated computational environments                     |
 
 ---
+## 🚀 Installation
 
+### Requirements
+
+* Linux
+* Docker
+* Internet connection during image construction
+
+### Clone the repository
+
+```bash
+git clone https://github.com/halgocom/yeast.git
+cd yeast
+```
+
+Make the helper scripts executable:
+
+```bash
+chmod +x build.sh
+chmod +x buildsave.sh
+chmod +x buiran.sh
+chmod +x loadrun.sh
+chmod +x run.sh
+```
+
+---
+
+## 🔨 Build
+
+Build the screening image with:
+
+```bash
+./build.sh
+```
+
+When prompted for the module, enter:
+
+```text
+screener
+```
+
+The resulting image contains the Python screening environment and the tools required for ligand/receptor preparation and AutoDock Vina docking.
+
+### Export the image (Optional)
+
+```bash
+./buildsave.sh
+```
+
+The generated Docker archive can be transferred to another machine and loaded without rebuilding the environment.
+
+### Load an existing image
+
+```bash
+./loadrun.sh
+```
+
+### Run YeAST
+
+```bash
+./run.sh
+```
+
+Select:
+
+```text
+screener
+```
+
+## 📋 Example YeAST virtual screening protocol
+```python
+    from mk_pipeline import MeekoPipeline
+    from filters import LipinskiRDKit
+    from forcefield import RdkitEtkgd
+    from AutoDockScreen import calc_map,basic_docking
+
+    
+    
+    if __name__ == "__main__":
+    
+        clean_settings = {"1z95":{"ligand":"198","chain":"A","altloc":"A","pH":6.1}}
+    
+        dock=MeekoPipeline(experiment_id="prost_canc",replicates=10,run_name="crest_vinardo")
+    
+        dock.load_targets("1z95")
+        dock.target_cleanup(**clean_settings)
+        dock.process_targets(box={"1z95": ((28.1117, 1.4037, 6.5190),(26.0, 26.0, 26.0))})
+    
+        dock.load_ligands(filename="cannabinoids_inib_opt.sdf.gz",sdf_confs=True)
+        
+        dock.filter_ligands(filter_f=LipinskiRDKit)
+        
+        dock.optimize_ligand(protonate=True,pH_max=6.5,pH_min=6.1)
+    
+        dock.process_ligands(output="path")
+        
+        dock.init_docking(safety_factor=1)
+    
+        dock.calculate_maps(map_f=calc_map,map_mode="o4a",target_id="1z95",target_box=True)
+    
+        dock.screen_single_target(dock_f=basic_docking,target_id="1z95",verbosity=0,sf_name="vinardo",poses=10)
+    
+        dock.check_poses(target_id="1z95",redock="RBICALUTAMIDE",box_threshold=0.9)
+        dock.analyze_interactions(target_id="1z95")
+        dock.calc_metrics(("ki","le"),target_id="1z95")
+    
+        dock.create_report
+
+```
+---
+## 🧬 Receptor preparation
+```python
+
+        clean_settings = {"1z95":{"ligand":"198","chain":"A","altloc":"A","pH":6.1}}
+    
+        dock=MeekoPipeline(experiment_id="prost_canc",replicates=10,run_name="crest_vinardo")
+    
+        dock.load_targets("1z95")
+        dock.target_cleanup(**clean_settings)
+        dock.process_targets(box={"1z95": ((28.1117, 1.4037, 6.5190),(26.0, 26.0, 26.0))})
+```
+Receptors can either be supplied locally or downloaded directly from the **RCSB Protein Data Bank** using their PDB identifier.
+
+The preparation workflow supports:
+
+* structure cleaning with ProDy or PDBFixer;
+* hydrogen placement through CCTBX/Reduce2 or pdb2pqr (default);
+* PDBQT conversion;
+* crystallographic-ligand-based box definition;
+* user-defined docking boxes;
+
+
+---
 ## 🧪 Ligand preparation
-
+```python
+    dock.load_ligands(filename="cannabinoids_inib_opt.sdf.gz",sdf_confs=True)
+        
+        dock.filter_ligands(filter_f=LipinskiRDKit)
+        
+        dock.optimize_ligand(protonate=True,pH_max=6.5,pH_min=6.1)
+    
+        dock.process_ligands(output="path")
+```
 YeAST accepts ligand libraries in several formats:
 
 * SDF
@@ -83,34 +223,58 @@ The preparation workflow includes:
 * protonation and hydrogen handling through `molscrub`;
 * conversion to PDBQT through Meeko;
 * generation of 3D conformations with RDKit `ETKDGv3`;
-* stereochemistry preservation;
-* optional hydrated ligand preparation;
-* coordinate translation relative to the docking box.
 
 Ligand and conformer identifiers are retained throughout the workflow, allowing generated structures and docking results to be traced back to the original library.
 
+
+### 📦 Input formats
+
+#### SDF
+
+```text
+library.sdf
+```
+
+Compressed SDF files are also supported:
+
+```text
+library.sdf.gz
+```
+
+#### CSV
+
+CSV files require at least:
+
+```text
+id,smiles
+```
+
+Example:
+
+```csv
+id,smiles
+ligand_001,CCO
+ligand_002,CCN
+```
+
 ---
-
-## 🧬 Receptor preparation
-
-Receptors can either be supplied locally or downloaded directly from the **RCSB Protein Data Bank** using their PDB identifier.
-
-The preparation workflow supports:
-
-* structure cleaning with ProDy or PDBFixer;
-* hydrogen placement through CCTBX/Reduce2;
-* PDBQT conversion;
-* crystallographic-ligand-based box definition;
-* user-defined docking boxes;
-* preparation of selected complexes for molecular dynamics.
-
----
-
 ## 🔬 Molecular docking
-
+```python
+        dock.init_docking(safety_factor=1)
+    
+        dock.calculate_maps(map_f=calc_map,map_mode="o4a",target_id="1z95",target_box=True)
+    
+        dock.screen_single_target(dock_f=basic_docking,target_id="1z95",verbosity=0,sf_name="vinardo",poses=10)
+    
+        dock.check_poses(target_id="1z95",redock="RBICALUTAMIDE",box_threshold=0.9)
+        dock.analyze_interactions(target_id="1z95")
+        dock.calc_metrics(("ki","le"),target_id="1z95")
+    
+        dock.create_report
+```
 YeAST uses the Python API of **AutoDock Vina**.
 
-A typical screening run follows:
+A typical screening run looks like this:
 
 ```mermaid
 flowchart LR
@@ -121,7 +285,7 @@ flowchart LR
     D --> E["Local Optimization"]
     E --> F["Docking"]
     F --> G["Poses + Energies"]
-    G --> H["PDBQT → SDF"]
+    G --> H["PDBQT + SDF"]
 
     classDef input fill:#E8F1FB,stroke:#3776AB,color:#17324D
     classDef process fill:#EAF3FF,stroke:#4C9AFF,color:#17324D
@@ -132,7 +296,7 @@ flowchart LR
     class G,H output
 ```
 
-The docking workflow supports multiple poses, exhaustiveness, CPU count, random seeds, scoring functions and replicate identifiers.
+The docking workflow handles multiple poses, exhaustiveness, CPU count, random seeds, scoring functions and replicate identifiers.
 
 ---
 
@@ -179,7 +343,7 @@ The analysis is performed on structures sampled during the molecular-dynamics si
 flowchart LR
 
     A["GROMACS trajectory"] --> B["Trajectory processing"]
-    B --> C["MM/GBSA script"]
+    B --> C["MM/GBSA"]
     C --> D["Energy components"]
     D --> E["Binding-energy estimates"]
 
@@ -194,23 +358,6 @@ flowchart LR
 
 This adds an energetic analysis stage after docking and molecular dynamics, allowing selected complexes to be examined using information obtained from their simulated conformational ensemble.
 
-The complete post-docking workflow is therefore:
-
-```text
-Docking
-   ↓
-Selected complexes
-   ↓
-GROMACS MD
-   ↓
-Production trajectories
-   ↓
-MM/GBSA script
-   ↓
-Energy estimates
-```
-
----
 
 ## 🐳 Reproducible environments
 
@@ -252,147 +399,16 @@ This separation is useful because docking and MD have different dependency requi
 
 ---
 
-## 🚀 Installation
-
-### Requirements
-
-* Linux
-* Docker
-* Internet connection during image construction
-
-### Clone the repository
-
-```bash
-git clone https://github.com/halgocom/yeast.git
-cd yeast
-```
-
-Make the helper scripts executable:
-
-```bash
-chmod +x build.sh
-chmod +x buildsave.sh
-chmod +x buiran.sh
-chmod +x loadrun.sh
-chmod +x run.sh
-```
-
----
-
-## 🔨 Build
-
-Build the screening image with:
-
-```bash
-./build.sh
-```
-
-When prompted for the module, enter:
-
-```text
-screener
-```
-
-The resulting image contains the Python screening environment and the tools required for ligand/receptor preparation and AutoDock Vina docking.
-
-### Export the image
-
-```bash
-./buildsave.sh
-```
-
-The generated Docker archive can be transferred to another machine and loaded without rebuilding the environment.
-
-### Load an existing image
-
-```bash
-./loadrun.sh
-```
-
-### Run YeAST
-
-```bash
-./run.sh
-```
-
-Select:
-
-```text
-screener
-```
-
----
-
-## ⚡ Quick start
-
-```bash
-git clone https://github.com/halgocom/yeast.git
-cd yeast
-
-chmod +x *.sh
-
-./build.sh
-```
-
-Select:
-
-```text
-screener
-```
-
-Then:
-
-```bash
-./run.sh
-```
-
----
-
-## 📦 Input formats
-
-### SDF
-
-```text
-library.sdf
-```
-
-Compressed SDF files are also supported:
-
-```text
-library.sdf.gz
-```
-
-### CSV
-
-CSV files require at least:
-
-```text
-id,smiles
-```
-
-Example:
-
-```csv
-id,smiles
-ligand_001,CCO
-ligand_002,CCN
-```
-
----
 
 ## 🧪 Ligand conformations
 
-For molecules requiring multiple conformations, YeAST uses RDKit's `ETKDGv3` embedding procedure.
 
-Supported features include:
-
-* small-ring torsions;
-* macrocycle torsions;
-* chirality enforcement;
-* reproducible random seeds;
-* multiple conformer generation.
-
+# Using RDKit 
+By default for molecules requiring multiple conformations, YeAST uses RDKit's `ETKDGv3` embedding procedure.
 Generated conformers retain their ligand and conformer identifiers throughout the screening workflow.
+
+# Using CREST
+Albeit slower,CREST geometry optimization yields more precise coordinates then RDKit,at the same time require a great amount of time on slower systems
 
 ---
 
