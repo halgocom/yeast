@@ -1,0 +1,12 @@
+ligand_id,file,target_id,energy,reproduced,max RMSD
+5FAKB48,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/5FAKB48/2am9_5FAKB48_3_replicate1.sdf,2am9,-7.512,Yes,6.243263918952723e-07
+CBD,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/CBD/2am9_CBD_2_replicate1.sdf,2am9,-7.538,Yes,0.0
+CBN,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/CBN/2am9_CBN_0_replicate1.sdf,2am9,-8.028,Yes,0.0
+DHT,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/DHT/2am9_DHT_4_replicate1.sdf,2am9,-11.064,Yes,6.429670929558201e-07
+DTHC,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/DTHC/2am9_DTHC_1_replicate1.sdf,2am9,-7.085,Yes,0.0
+HU210,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/HU210/2am9_HU210_2_replicate1.sdf,2am9,-6.974,Yes,0.0
+LTHC,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/LTHC/2am9_LTHC_1_replicate1.sdf,2am9,-7.085,Yes,0.0
+MDMBCHMINACA,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/MDMBCHMINACA/2am9_MDMBCHMINACA_4_replicate1.sdf,2am9,-7.15,Yes,6.243263918952723e-07
+R1881,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/R1881/2am9_R1881_1_replicate1.sdf,2am9,-10.836,Yes,0.0
+RBICALUTAMIDE,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/RBICALUTAMIDE/2am9_RBICALUTAMIDE_0_replicate1.sdf,2am9,-7.555,Yes,3.541857493916547e-07
+Testosterone,/home/screener/files/prost_canc/vinardo/results/2am9/replicate 1/Testosterone/2am9_Testosterone_0_replicate1.sdf,2am9,-10.833,Yes,0.0

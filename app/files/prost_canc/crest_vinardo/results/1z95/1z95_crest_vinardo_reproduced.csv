@@ -1,0 +1,10 @@
+ligand_id,file,target_id,energy,reproduced,max RMSD
+CBD,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/CBD/1z95_CBD_0_replicate1.sdf,1z95,-6.993,Yes,0.0
+CBN,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/CBN/1z95_CBN_0_replicate1.sdf,1z95,-7.166,Yes,6.888533768793251e-07
+DHT,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/DHT/1z95_DHT_0_replicate1.sdf,1z95,-7.48,Yes,0.0
+DTHC,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/DTHC/1z95_DTHC_0_replicate1.sdf,1z95,-7.602,Yes,0.0
+LTHC,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/LTHC/1z95_LTHC_0_replicate1.sdf,1z95,-7.594,Yes,3.977096825734611e-07
+MDMBCHMINACA,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/MDMBCHMINACA/1z95_MDMBCHMINACA_0_replicate1.sdf,1z95,-8.673,Yes,8.829308507657541e-07
+R1881,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/R1881/1z95_R1881_2_replicate1.sdf,1z95,-9.532,Yes,0.0
+RBICALUTAMIDE,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/RBICALUTAMIDE/1z95_RBICALUTAMIDE_0_replicate1.sdf,1z95,-10.434,Yes,7.083714987833094e-07
+Testosterone,/home/screener/files/prost_canc/crest_vinardo/results/1z95/replicate 1/Testosterone/1z95_Testosterone_6_replicate1.sdf,1z95,-7.42,Yes,5.886205671771695e-07

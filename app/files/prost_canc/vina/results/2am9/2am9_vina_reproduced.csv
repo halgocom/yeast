@@ -1,0 +1,11 @@
+ligand_id,file,target_id,energy,reproduced,max RMSD
+5FAKB48,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/5FAKB48/2am9_5FAKB48_1_replicate1.sdf,2am9,-6.676,Yes,3.604550104229233e-07
+CBD,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/CBD/2am9_CBD_4_replicate1.sdf,2am9,-7.082,Yes,0.0
+CBN,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/CBN/2am9_CBN_2_replicate1.sdf,2am9,-7.556,Yes,0.0
+DHT,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/DHT/2am9_DHT_4_replicate1.sdf,2am9,-11.087,Yes,0.0
+DTHC,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/DTHC/2am9_DTHC_1_replicate1.sdf,2am9,-6.335,Yes,0.0
+HU210,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/HU210/2am9_HU210_0_replicate1.sdf,2am9,-4.703,Yes,0.0
+LTHC,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/LTHC/2am9_LTHC_1_replicate1.sdf,2am9,-6.335,Yes,0.0
+MDMBCHMINACA,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/MDMBCHMINACA/2am9_MDMBCHMINACA_1_replicate1.sdf,2am9,-6.975,Yes,0.0
+R1881,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/R1881/2am9_R1881_1_replicate1.sdf,2am9,-10.828,Yes,0.0
+Testosterone,/home/screener/files/prost_canc/vina/results/2am9/replicate 1/Testosterone/2am9_Testosterone_0_replicate1.sdf,2am9,-10.817,Yes,4.162175945968482e-07

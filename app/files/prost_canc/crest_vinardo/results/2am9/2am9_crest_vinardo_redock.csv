@@ -1,0 +1,10 @@
+ligand_id,file,target_id,energy,reproduced,max RMSD,redocked,norm_score
+5FAKB48,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/5FAKB48/2am9_5FAKB48_0_replicate1.sdf,2am9,-7.128,Yes,3.604550104229233e-07,Not in structure,65.11
+CBD,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/CBD/2am9_CBD_0_replicate1.sdf,2am9,-6.669,Yes,6.888533768793251e-07,Not in structure,60.92
+CBN,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/CBN/2am9_CBN_0_replicate1.sdf,2am9,-7.168,Yes,7.954193651469222e-07,Not in structure,65.47
+DHT,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/DHT/2am9_DHT_1_replicate1.sdf,2am9,-10.948,Yes,5.75087250857856e-07,Not in structure,100.0
+DTHC,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/DTHC/2am9_DTHC_2_replicate1.sdf,2am9,-6.31,Yes,5.624464269824872e-07,Not in structure,57.64
+LTHC,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/LTHC/2am9_LTHC_1_replicate1.sdf,2am9,-6.307,Yes,5.624464269824872e-07,Not in structure,57.61
+R1881,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/R1881/2am9_R1881_0_replicate1.sdf,2am9,-10.015,Yes,2.9431028358858473e-07,Not in structure,91.48
+RBICALUTAMIDE,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/RBICALUTAMIDE/2am9_RBICALUTAMIDE_0_replicate1.sdf,2am9,-6.254,Yes,7.919834123014447e-07,Not in structure,57.12
+Testosterone,/home/screener/files/prost_canc/crest_vinardo/results/2am9/replicate 1/Testosterone/2am9_Testosterone_0_replicate1.sdf,2am9,-10.606,Yes,6.580978005813162e-07,Yes,96.88

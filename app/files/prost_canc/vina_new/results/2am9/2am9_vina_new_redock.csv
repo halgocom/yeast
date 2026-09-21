@@ -1,0 +1,12 @@
+ligand_id,file,target_id,energy,reproduced,max RMSD,redocked,norm_score
+5FAKB48,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/5FAKB48/2am9_5FAKB48_3_replicate1.sdf,2am9,-7.508,Yes,0.0,Not in structure,67.86
+CBD,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/CBD/2am9_CBD_4_replicate1.sdf,2am9,-7.541,Yes,0.0,Not in structure,68.16
+CBN,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/CBN/2am9_CBN_4_replicate1.sdf,2am9,-8.024,Yes,5.624464269824872e-07,Not in structure,72.52
+DHT,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/DHT/2am9_DHT_4_replicate1.sdf,2am9,-11.064,Yes,0.0,Not in structure,100.0
+DTHC,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/DTHC/2am9_DTHC_1_replicate1.sdf,2am9,-7.057,Yes,0.0,Not in structure,63.78
+HU210,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/HU210/2am9_HU210_0_replicate1.sdf,2am9,-7.355,Yes,5.097603643654335e-07,Not in structure,66.48
+LTHC,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/LTHC/2am9_LTHC_1_replicate1.sdf,2am9,-7.057,Yes,0.0,Not in structure,63.78
+MDMBCHMINACA,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/MDMBCHMINACA/2am9_MDMBCHMINACA_4_replicate1.sdf,2am9,-7.192,Yes,5.097603643654335e-07,Not in structure,65.0
+R1881,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/R1881/2am9_R1881_1_replicate1.sdf,2am9,-10.836,Yes,0.0,Not in structure,97.94
+RBICALUTAMIDE,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/RBICALUTAMIDE/2am9_RBICALUTAMIDE_4_replicate1.sdf,2am9,-8.292,Yes,0.0,Not in structure,74.95
+Testosterone,/home/screener/files/prost_canc/vina_new/results/2am9/replicate 1/Testosterone/2am9_Testosterone_0_replicate1.sdf,2am9,-10.833,Yes,0.0,Yes,97.91

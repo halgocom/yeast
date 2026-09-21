@@ -1,0 +1,3245 @@
+
+       ╔════════════════════════════════════════════╗
+       ║            ___ ___ ___ ___ _____           ║
+       ║           / __| _ \ __/ __|_   _|          ║
+       ║          | (__|   / _|\__ \ | |            ║
+       ║           \___|_|_\___|___/ |_|            ║
+       ║                                            ║
+       ║  Conformer-Rotamer Ensemble Sampling Tool  ║
+       ║          based on the xTB methods          ║
+       ║                                            ║
+       ╚════════════════════════════════════════════╝
+       Version 3.0.2, Tue, 05 August 16:25:20, 08/05/2025
+       commit (6914a25) compiled by 'usr@b54ea9d7c43e'
+
+   Cite work conducted with this code as
+
+   • P.Pracht, F.Bohle, S.Grimme, PCCP, 2020, 22, 7169-7192.
+   • S.Grimme, JCTC, 2019, 15, 2847-2862.
+   • P.Pracht, S.Grimme, C.Bannwarth, F.Bohle, S.Ehlert,
+     G.Feldmann, J.Gorges, M.Müller, T.Neudecker, C.Plett,
+     S.Spicher, P.Steinbach, P.Wesołowski, F.Zeller,
+     J. Chem. Phys., 2024, 160, 114110.
+
+   for works involving QCG cite
+
+   • S.Spicher, C.Plett, P.Pracht, A.Hansen, S.Grimme,
+     JCTC, 2022, 18 (5), 3174-3189.
+   • C.Plett, S. Grimme,
+     Angew. Chem. Int. Ed. 2023, 62, e202214477.
+
+   for works involving MECP screening cite
+
+   • P.Pracht, C.Bannwarth, JCTC, 2022, 18 (10), 6370-6385.
+
+   Original code
+     P.Pracht, S.Grimme, Universität Bonn, MCTC
+   with help from (alphabetical order):
+     C.Bannwarth, F.Bohle, S.Ehlert, G.Feldmann, J.Gorges,
+     S.Grimme, C.Plett, P.Pracht, S.Spicher, P.Steinbach,
+     P.Wesolowski, F.Zeller
+
+   Online documentation is available at
+   https://crest-lab.github.io/crest-docs/
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU Lesser General Public License (LGPL) for more details.
+
+ Command line input:
+ $ crest /home/crest/shared_files/sources/ligands/cannabinoids_inib/CBN/CBN.xyz --gfn2 --ewin 5.0 -T 2
+
+  --gfn2               : Use of GFN2-xTB requested.
+  --ewin 5.0
+  -T 2 (CPUs/Threads selected)
+
+> Setting up backup calculator ... done.
+ ----------------
+ Calculation info
+ ----------------
+> User-defined calculation level:
+ : xTB calculation via tblite lib
+ : GFN2-xTB level
+ :   Molecular charge    : 0
+ :   Fermi temperature   : 300.00000
+ :   Accuracy            : 1.00000
+ :   max SCC cycles      : 500
+
+
+ -----------------------------
+ Initial Geometry Optimization
+ -----------------------------
+ Geometry successfully optimized.
+
+          ┍━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┑
+          │              CREST iMTD-GC SAMPLING             │
+          ┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+
+ Input structure:
+  49
+
+ C          5.6866209936        0.5908200208       -2.6680735285
+ C          5.5599406286       -0.2499412166       -1.4036263888
+ C          4.6173539087        0.3910105073       -0.3881943306
+ C          4.4889247044       -0.4459948158        0.8812036390
+ C          3.5451994350        0.1937583844        1.9080892270
+ C          2.1379225257        0.2674974374        1.3915436304
+ C          1.3530293925       -0.8712974409        1.3331743002
+ C          0.0647134451       -0.8145409613        0.8195096338
+ C         -0.5052099387        0.3971843615        0.3956712404
+ C          0.3141677123        1.5345775208        0.4239230286
+ O         -0.1540907777        2.7282940899       -0.0434902501
+ C          1.6128733095        1.4567152528        0.9091663158
+ C         -1.9209559644        0.3771764076        0.0245663696
+ C         -2.7146434306        1.5210368182        0.0023757107
+ C         -4.0621750402        1.4634813262       -0.3136325393
+ C         -4.8890048138        2.7129846535       -0.3625895841
+ C         -4.6288801514        0.2298674845       -0.6039150026
+ C         -3.8626256504       -0.9203995890       -0.5602086274
+ C         -2.5161361612       -0.8633711290       -0.2418055734
+ C         -1.6460422609       -2.0994643762       -0.2172248267
+ C         -2.4030213104       -3.3719631826        0.1651113432
+ C         -0.9804243615       -2.2678675148       -1.5940899753
+ O         -0.6262765971       -1.9793296625        0.7819574236
+ H          4.7151882802        0.7137896075       -3.1422040579
+ H          6.3582405190        0.1158972460       -3.3795088573
+ H          6.0792886922        1.5778434536       -2.4325502250
+ H          6.5467519619       -0.3767217840       -0.9518104153
+ H          5.1858233626       -1.2426055714       -1.6641298145
+ H          3.6300918859        0.5120720080       -0.8394933184
+ H          4.9906399616        1.3853193254       -0.1297102755
+ H          5.4755389990       -0.5686312543        1.3344798396
+ H          4.1137562498       -1.4378648406        0.6216355851
+ H          3.9053284957        1.1953942529        2.1512033843
+ H          3.5621345071       -0.4058161726        2.8207908441
+ H          1.7260986636       -1.8225587394        1.6782642264
+ H          0.5541757978        3.3825734700        0.0041729312
+ H          2.2210853312        2.3528858594        0.9180642982
+ H         -2.2731807516        2.4742926694        0.2377102104
+ H         -4.9710114104        3.0646299567       -1.3916457682
+ H         -5.8947766625        2.5263985612        0.0083806994
+ H         -4.4336681244        3.5030301419        0.2293688049
+ H         -5.6768206674        0.1661214973       -0.8602056982
+ H         -4.3266760540       -1.8688069577       -0.7817935380
+ H         -3.0410052085       -3.7053450759       -0.6471016320
+ H         -3.0039060576       -3.1993305515        1.0541850804
+ H         -1.6775586911       -4.1515158433        0.3837489977
+ H         -0.3745963283       -1.3931310736       -1.8228469402
+ H         -1.7409985045       -2.3763208407       -2.3626023223
+ H         -0.3403445652       -3.1473760008       -1.5923236211
+
+ ------------------------------------------------
+ Generating MTD length from a flexibility measure
+ ------------------------------------------------
+ Calculating GFN0-xTB WBOs   ... done.
+ Calculating NCI flexibility ... done.
+     covalent flexibility measure :   0.349
+ non-covalent flexibility measure :   0.726
+ flexibility measure :   0.389
+ t(MTD) / ps    :    15.0
+ Σ(t(MTD)) / ps :   210.0 (14 MTDs)
+
+ -----------------------------------
+ Starting trial MTD to test settings
+ -----------------------------------
+ Trial MTD 1 runtime (1.0 ps) ...        0 min, 17.001 sec
+ Estimated runtime for one MTD (15.0 ps) on a single thread: 4 min 15 sec
+ Estimated runtime for a batch of 14 MTDs on 2 threads: 29 min 45 sec
+
+******************************************************************************************
+**                         N E W   I T E R A T I O N  C Y C L E                         **
+******************************************************************************************
+
+ ------------------------------
+ Meta-Dynamics Iteration 1
+ ------------------------------
+ list of applied metadynamics Vbias parameters:
+$metadyn    0.14700   1.300
+$metadyn    0.07350   1.300
+$metadyn    0.03675   1.300
+$metadyn    0.14700   0.780
+$metadyn    0.07350   0.780
+$metadyn    0.03675   0.780
+$metadyn    0.14700   0.468
+$metadyn    0.07350   0.468
+$metadyn    0.03675   0.468
+$metadyn    0.14700   0.281
+$metadyn    0.07350   0.281
+$metadyn    0.03675   0.281
+$metadyn    0.04900   0.100
+$metadyn    0.24500   0.800
+
+  ::::::::::::: starting MTD    1 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+  ::::::::::::: starting MTD    8 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD   1 completed successfully ...        4 min, 40.928 sec
+  ::::::::::::: starting MTD    2 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+*MTD   8 completed successfully ...        4 min, 41.395 sec
+  ::::::::::::: starting MTD    9 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD   9 completed successfully ...        4 min, 42.744 sec
+  ::::::::::::: starting MTD   10 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   2 completed successfully ...        4 min, 43.282 sec
+  ::::::::::::: starting MTD    3 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+*MTD   3 completed successfully ...        4 min, 43.369 sec
+  ::::::::::::: starting MTD    4 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  10 completed successfully ...        4 min, 45.731 sec
+  ::::::::::::: starting MTD   11 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   4 completed successfully ...        4 min, 41.446 sec
+  ::::::::::::: starting MTD    5 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  11 completed successfully ...        4 min, 42.207 sec
+  ::::::::::::: starting MTD   12 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   5 completed successfully ...        4 min, 43.540 sec
+  ::::::::::::: starting MTD    6 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  12 completed successfully ...        4 min, 44.189 sec
+  ::::::::::::: starting MTD   13 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0490 Eh       |
+  |   Vbias exponent (α)   :  0.1000 bohr⁻²   |
+*MTD   6 completed successfully ...        4 min, 44.417 sec
+  ::::::::::::: starting MTD    7 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD  13 completed successfully ...        4 min, 46.487 sec
+  ::::::::::::: starting MTD   14 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.2450 Eh       |
+  |   Vbias exponent (α)   :  0.8000 bohr⁻²   |
+*MTD   7 completed successfully ...        4 min, 43.759 sec
+*MTD  14 completed successfully ...        4 min, 41.483 sec
+
+ ======================================
+ |  Multilevel Ensemble Optimization  |
+ ======================================
+ Optimizing all 2086 structures from file "crest_dynamics.trj" ...
+ ----------------------
+ crude pre-optimization
+ ----------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.500E-03 Eh, 0.100E-01 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 2086 of 2086 structures successfully optimized (100.0% success)
+> Total runtime for 2086 optimizations:
+ * wall-time:     0 d,  0 h, 23 min, 46.095 sec
+ *  cpu-time:     0 d,  0 h, 47 min, 31.469 sec
+ * ratio c/w:     1.999 speedup
+> Corresponding to approximately 0.684 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.40973
+ 2055 structures remain within    10.00 kcal/mol window
+ ----------------------------------
+ optimization with tight thresholds
+ ----------------------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.100E-05 Eh, 0.800E-03 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 2054 of 2055 structures successfully optimized (100.0% success)
+> Total runtime for 2055 optimizations:
+ * wall-time:     0 d,  1 h, 22 min,  5.400 sec
+ *  cpu-time:     0 d,  2 h, 43 min, 58.724 sec
+ * ratio c/w:     1.998 speedup
+> Corresponding to approximately 2.397 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 1357 structures remain within     5.00 kcal/mol window
+
+ ------------------------------
+ Meta-Dynamics Iteration 2
+ ------------------------------
+ list of applied metadynamics Vbias parameters:
+$metadyn    0.14700   1.300
+$metadyn    0.07350   1.300
+$metadyn    0.03675   1.300
+$metadyn    0.14700   0.780
+$metadyn    0.07350   0.780
+$metadyn    0.03675   0.780
+$metadyn    0.14700   0.468
+$metadyn    0.07350   0.468
+$metadyn    0.03675   0.468
+$metadyn    0.14700   0.281
+$metadyn    0.07350   0.281
+$metadyn    0.03675   0.281
+$metadyn    0.04900   0.100
+$metadyn    0.24500   0.800
+
+  ::::::::::::: starting MTD    1 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+  ::::::::::::: starting MTD    8 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD   8 completed successfully ...        4 min, 42.497 sec
+  ::::::::::::: starting MTD    9 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD   1 completed successfully ...        4 min, 44.883 sec
+  ::::::::::::: starting MTD    2 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+*MTD   9 completed successfully ...        4 min, 43.945 sec
+  ::::::::::::: starting MTD   10 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   2 completed successfully ...        4 min, 42.140 sec
+  ::::::::::::: starting MTD    3 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  1.3000 bohr⁻²   |
+*MTD  10 completed successfully ...        4 min, 43.440 sec
+  ::::::::::::: starting MTD   11 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   3 completed successfully ...        4 min, 47.454 sec
+  ::::::::::::: starting MTD    4 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  11 completed successfully ...        4 min, 44.430 sec
+  ::::::::::::: starting MTD   12 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.2808 bohr⁻²   |
+*MTD   4 completed successfully ...        4 min, 44.762 sec
+  ::::::::::::: starting MTD    5 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0735 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  12 completed successfully ...        4 min, 43.746 sec
+  ::::::::::::: starting MTD   13 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0490 Eh       |
+  |   Vbias exponent (α)   :  0.1000 bohr⁻²   |
+*MTD   5 completed successfully ...        4 min, 43.886 sec
+  ::::::::::::: starting MTD    6 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.0367 Eh       |
+  |   Vbias exponent (α)   :  0.7800 bohr⁻²   |
+*MTD  13 completed successfully ...        4 min, 48.439 sec
+  ::::::::::::: starting MTD   14 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.2450 Eh       |
+  |   Vbias exponent (α)   :  0.8000 bohr⁻²   |
+*MTD   6 completed successfully ...        4 min, 43.629 sec
+  ::::::::::::: starting MTD    7 :::::::::::::
+  |   MD simulation time   :    15.0 ps       |
+  |   target T             :   300.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  |   dump interval(Vbias) :    1.00 ps       |
+  |   Vbias prefactor (k)  :  0.1470 Eh       |
+  |   Vbias exponent (α)   :  0.4680 bohr⁻²   |
+*MTD  14 completed successfully ...        4 min, 41.174 sec
+*MTD   7 completed successfully ...        4 min, 45.907 sec
+
+ ======================================
+ |  Multilevel Ensemble Optimization  |
+ ======================================
+ Optimizing all 2086 structures from file "crest_dynamics.trj" ...
+ ----------------------
+ crude pre-optimization
+ ----------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.500E-03 Eh, 0.100E-01 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 2086 of 2086 structures successfully optimized (100.0% success)
+> Total runtime for 2086 optimizations:
+ * wall-time:     0 d,  0 h, 24 min, 39.595 sec
+ *  cpu-time:     0 d,  0 h, 49 min, 17.468 sec
+ * ratio c/w:     1.999 speedup
+> Corresponding to approximately 0.709 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41002
+ 2041 structures remain within    10.00 kcal/mol window
+ ----------------------------------
+ optimization with tight thresholds
+ ----------------------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.100E-05 Eh, 0.800E-03 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 2041 of 2041 structures successfully optimized (100.0% success)
+> Total runtime for 2041 optimizations:
+ * wall-time:     0 d,  1 h, 16 min, 43.359 sec
+ *  cpu-time:     0 d,  2 h, 33 min, 19.179 sec
+ * ratio c/w:     1.998 speedup
+> Corresponding to approximately 2.255 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 1351 structures remain within     5.00 kcal/mol window
+
+========================================
+           MTD Simulations done         
+========================================
+ Collecting ensmbles.
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 2532 structures remain within     5.00 kcal/mol window
+
+
+ ===============================================
+ Additional regular MDs on lowest 4 conformer(s)
+ ===============================================
+  :::::::::::::: starting MD   1 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   400.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+  :::::::::::::: starting MD   8 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   500.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   8 completed successfully ...        2 min, 22.644 sec
+  :::::::::::::: starting MD   7 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   500.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   1 completed successfully ...        2 min, 23.856 sec
+  :::::::::::::: starting MD   2 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   400.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   7 completed successfully ...        2 min, 24.813 sec
+  :::::::::::::: starting MD   6 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   500.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   2 completed successfully ...        2 min, 23.739 sec
+  :::::::::::::: starting MD   3 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   400.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   3 completed successfully ...        2 min, 24.160 sec
+  :::::::::::::: starting MD   4 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   400.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   6 completed successfully ...        2 min, 24.328 sec
+  :::::::::::::: starting MD   5 ::::::::::::::
+  |   MD simulation time   :     7.5 ps       |
+  |   target T             :   500.0 K        |
+  |   timestep dt          :     5.0 fs       |
+  |   dump interval(trj)   :   100.0 fs       |
+  |   SHAKE algorithm      : true (all bonds) |
+*MD   4 completed successfully ...        2 min, 24.080 sec
+*MD   5 completed successfully ...        2 min, 24.203 sec
+ Appending file crest_rotamers_1.xyz with new structures
+ Optimizing all 3124 structures from file "crest_rotamers_1.xyz" ...
+ ----------------------------------
+ optimization with tight thresholds
+ ----------------------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.100E-05 Eh, 0.800E-03 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 3124 of 3124 structures successfully optimized (100.0% success)
+> Total runtime for 3124 optimizations:
+ * wall-time:     0 d,  0 h, 30 min, 54.431 sec
+ *  cpu-time:     0 d,  1 h,  1 min, 43.963 sec
+ * ratio c/w:     1.997 speedup
+> Corresponding to approximately 0.594 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 2603 structures remain within     5.00 kcal/mol window
+
+     ========================================
+     |        Structure Crossing (GC)       |
+     ========================================
+
+ =============================
+  # threads =           2
+ =============================
+input  file name : crest_rotamers_2.xyz
+number of atoms                :      49
+number of points on xyz files  :    2603
+conformer energy window  /kcal :    5.00
+CN per atom difference cut-off :  0.3000
+RMSD threshold (Ang, Bohr)     :  0.2500  0.4724
+max. # of generated structures :      750
+ # in E window        2603
+  10.5 % done
+  35.6 % done
+  61.8 % done
+  86.1 % done
+ finished.
+ average rmsd w.r.t input     :     3.05544
+ number of clash discarded    :        2564
+ removed identical structures :         944
+
+ 750 structures written to confcross.xyz
+
+
+ ======================================
+ |  Multilevel Ensemble Optimization  |
+ ======================================
+ Optimizing all 750 structures from file "confcross.xyz" ...
+ ----------------------
+ crude pre-optimization
+ ----------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.500E-03 Eh, 0.100E-01 Eh/a0
+ maximum optimization steps: 200
+ |>0.1% |>10.0% |>20.0% |>30.0% |>40.0% |>50.0% |>60.0% |>70.1% |>80.0% |>90.1% |>100.0%
+ done.
+> 750 of 750 structures successfully optimized (100.0% success)
+> Total runtime for 750 optimizations:
+ * wall-time:     0 d,  0 h,  2 min,  9.342 sec
+ *  cpu-time:     0 d,  0 h,  4 min, 18.410 sec
+ * ratio c/w:     1.998 speedup
+> Corresponding to approximately 0.172 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 91 structures remain within    10.00 kcal/mol window
+ ----------------------------------
+ optimization with tight thresholds
+ ----------------------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.100E-05 Eh, 0.800E-03 Eh/a0
+ maximum optimization steps: 200
+ |>1.1% |>11.0% |>20.9% |>30.8% |>40.7% |>50.5% |>60.4% |>70.3% |>80.2% |>90.1% |>100.0%
+ done.
+> 91 of 91 structures successfully optimized (100.0% success)
+> Total runtime for 91 optimizations:
+ * wall-time:     0 d,  0 h,  1 min, 29.256 sec
+ *  cpu-time:     0 d,  0 h,  2 min, 56.042 sec
+ * ratio c/w:     1.972 speedup
+> Corresponding to approximately 0.981 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 90 structures remain within     5.00 kcal/mol window
+appending new structures to crest_rotamers_2.xyz
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+
+
+   ================================================
+   |           Final Geometry Optimization        |
+   ================================================
+ Optimizing all 2669 structures from file "crest_rotamers_3.xyz" ...
+ ---------------------------------------
+ optimization with very tight thresholds
+ ---------------------------------------
+ Optimization engine: ANCOPT
+ Hessian update type: BFGS
+ E/G convergence criteria:  0.100E-06 Eh, 0.200E-03 Eh/a0
+ maximum optimization steps: 200
+ |>0.0% |>7.5% |>15.0% |>22.5% |>30.0% |>37.5% |>45.0% |>52.5% |>60.0% |>67.5% |>75.0% |>82.5% |>90.0% |>97.5% |>100.0%
+ done.
+> 2660 of 2669 structures successfully optimized (99.7% success)
+> Total runtime for 2669 optimizations:
+ * wall-time:     0 d,  0 h, 47 min, 33.532 sec
+ *  cpu-time:     0 d,  1 h, 35 min,  4.821 sec
+ * ratio c/w:     1.999 speedup
+> Corresponding to approximately 1.069 sec per processed structure
+
+CREGEN> running RMSDs ... done.
+CREGEN> E lowest :   -66.41032
+ 2451 structures remain within     5.00 kcal/mol window
+
+
+ --------------------------
+ Final Ensemble Information
+ --------------------------
+ input  file name : crest_rotamers_3.xyz
+ output file name : crest_rotamers_4.xyz
+ number of atoms                :   49
+ number of points on xyz files  :   2660
+ RMSD threshold                 :   0.1250
+ Bconst threshold               :   0.0100
+ population threshold           :   0.0500
+ # fragment in coord            :     1
+ # bonds in reference structure :    51
+ number of reliable points      :  2660
+ sorting energy window (EWIN)   :    5.0000 / kcal*mol⁻¹
+ reference state Etot           :  -66.410320630000001
+ number of doubles removed by rot/RMSD         :         209
+ total number unique points considered further :        2451
+       Erel/kcal        Etot weight/tot  conformer     set   degen     origin
+       1   0.000   -66.41032    0.00112    0.10044       1      90
+       2   0.000   -66.41032    0.00112
+       3   0.000   -66.41032    0.00112
+       4   0.000   -66.41032    0.00112
+       5   0.000   -66.41032    0.00112
+       6   0.000   -66.41032    0.00112
+       7   0.000   -66.41032    0.00112
+       8   0.000   -66.41032    0.00112
+       9   0.000   -66.41032    0.00112
+      10   0.000   -66.41032    0.00112
+      11   0.000   -66.41032    0.00112
+      12   0.000   -66.41032    0.00112
+      13   0.000   -66.41032    0.00112
+      14   0.000   -66.41032    0.00112
+      15   0.000   -66.41032    0.00112
+      16   0.000   -66.41032    0.00112
+      17   0.000   -66.41032    0.00112
+      18   0.000   -66.41032    0.00112
+      19   0.000   -66.41032    0.00112
+      20   0.000   -66.41032    0.00112
+      21   0.000   -66.41032    0.00112
+      22   0.000   -66.41032    0.00112
+      23   0.000   -66.41032    0.00112
+      24   0.000   -66.41032    0.00112
+      25   0.000   -66.41032    0.00112
+      26   0.000   -66.41032    0.00112
+      27   0.000   -66.41032    0.00112
+      28   0.000   -66.41032    0.00112
+      29   0.000   -66.41032    0.00112
+      30   0.000   -66.41032    0.00112
+      31   0.001   -66.41032    0.00112
+      32   0.001   -66.41032    0.00112
+      33   0.001   -66.41032    0.00112
+      34   0.001   -66.41032    0.00112
+      35   0.001   -66.41032    0.00112
+      36   0.001   -66.41032    0.00112
+      37   0.001   -66.41032    0.00112
+      38   0.001   -66.41032    0.00112
+      39   0.001   -66.41032    0.00112
+      40   0.001   -66.41032    0.00112
+      41   0.001   -66.41032    0.00112
+      42   0.001   -66.41032    0.00112
+      43   0.001   -66.41032    0.00112
+      44   0.001   -66.41032    0.00112
+      45   0.001   -66.41032    0.00112
+      46   0.001   -66.41032    0.00112
+      47   0.001   -66.41032    0.00112
+      48   0.001   -66.41032    0.00112
+      49   0.001   -66.41032    0.00112
+      50   0.001   -66.41032    0.00112
+      51   0.001   -66.41032    0.00112
+      52   0.001   -66.41032    0.00112
+      53   0.001   -66.41032    0.00112
+      54   0.001   -66.41032    0.00112
+      55   0.001   -66.41032    0.00112
+      56   0.001   -66.41032    0.00112
+      57   0.001   -66.41032    0.00112
+      58   0.001   -66.41032    0.00112
+      59   0.001   -66.41032    0.00112
+      60   0.001   -66.41032    0.00112
+      61   0.001   -66.41032    0.00112
+      62   0.001   -66.41032    0.00112
+      63   0.001   -66.41032    0.00112
+      64   0.001   -66.41032    0.00112
+      65   0.001   -66.41032    0.00112
+      66   0.001   -66.41032    0.00112
+      67   0.002   -66.41032    0.00112
+      68   0.002   -66.41032    0.00112
+      69   0.002   -66.41032    0.00112
+      70   0.002   -66.41032    0.00112
+      71   0.002   -66.41032    0.00112
+      72   0.002   -66.41032    0.00112
+      73   0.002   -66.41032    0.00112
+      74   0.002   -66.41032    0.00112
+      75   0.002   -66.41032    0.00112
+      76   0.002   -66.41032    0.00112
+      77   0.002   -66.41032    0.00112
+      78   0.002   -66.41032    0.00112
+      79   0.002   -66.41032    0.00112
+      80   0.002   -66.41032    0.00111
+      81   0.002   -66.41032    0.00111
+      82   0.003   -66.41032    0.00111
+      83   0.004   -66.41031    0.00111
+      84   0.004   -66.41031    0.00111
+      85   0.005   -66.41031    0.00111
+      86   0.005   -66.41031    0.00111
+      87   0.007   -66.41031    0.00111
+      88   0.022   -66.41029    0.00108
+      89   0.022   -66.41029    0.00108
+      90   0.014   -66.41030    0.00109
+      91   0.019   -66.41029    0.00108    0.00216       2       2
+      92   0.022   -66.41029    0.00108
+      93   0.040   -66.41026    0.00105    0.07501       3      72
+      94   0.040   -66.41026    0.00105
+      95   0.040   -66.41026    0.00105
+      96   0.040   -66.41026    0.00105
+      97   0.040   -66.41026    0.00105
+      98   0.040   -66.41026    0.00105
+      99   0.041   -66.41026    0.00105
+     100   0.041   -66.41026    0.00105
+     101   0.041   -66.41026    0.00105
+     102   0.041   -66.41026    0.00104
+     103   0.041   -66.41026    0.00104
+     104   0.041   -66.41026    0.00104
+     105   0.041   -66.41026    0.00104
+     106   0.041   -66.41026    0.00104
+     107   0.041   -66.41026    0.00104
+     108   0.041   -66.41026    0.00104
+     109   0.041   -66.41026    0.00104
+     110   0.041   -66.41026    0.00104
+     111   0.041   -66.41026    0.00104
+     112   0.041   -66.41026    0.00104
+     113   0.041   -66.41026    0.00104
+     114   0.041   -66.41026    0.00104
+     115   0.041   -66.41026    0.00104
+     116   0.041   -66.41026    0.00104
+     117   0.041   -66.41026    0.00104
+     118   0.041   -66.41026    0.00104
+     119   0.041   -66.41026    0.00104
+     120   0.041   -66.41026    0.00104
+     121   0.041   -66.41026    0.00104
+     122   0.041   -66.41026    0.00104
+     123   0.041   -66.41026    0.00104
+     124   0.041   -66.41026    0.00104
+     125   0.041   -66.41026    0.00104
+     126   0.041   -66.41026    0.00104
+     127   0.041   -66.41026    0.00104
+     128   0.041   -66.41026    0.00104
+     129   0.041   -66.41025    0.00104
+     130   0.041   -66.41025    0.00104
+     131   0.041   -66.41025    0.00104
+     132   0.041   -66.41025    0.00104
+     133   0.041   -66.41025    0.00104
+     134   0.041   -66.41025    0.00104
+     135   0.041   -66.41025    0.00104
+     136   0.041   -66.41025    0.00104
+     137   0.041   -66.41025    0.00104
+     138   0.041   -66.41025    0.00104
+     139   0.041   -66.41025    0.00104
+     140   0.041   -66.41025    0.00104
+     141   0.042   -66.41025    0.00104
+     142   0.042   -66.41025    0.00104
+     143   0.042   -66.41025    0.00104
+     144   0.042   -66.41025    0.00104
+     145   0.042   -66.41025    0.00104
+     146   0.042   -66.41025    0.00104
+     147   0.042   -66.41025    0.00104
+     148   0.042   -66.41025    0.00104
+     149   0.043   -66.41025    0.00104
+     150   0.043   -66.41025    0.00104
+     151   0.043   -66.41025    0.00104
+     152   0.044   -66.41025    0.00104
+     153   0.044   -66.41025    0.00104
+     154   0.046   -66.41025    0.00104
+     155   0.047   -66.41025    0.00103
+     156   0.047   -66.41025    0.00103
+     157   0.051   -66.41024    0.00103
+     158   0.051   -66.41024    0.00103
+     159   0.051   -66.41024    0.00103
+     160   0.051   -66.41024    0.00103
+     161   0.051   -66.41024    0.00103
+     162   0.051   -66.41024    0.00103
+     163   0.051   -66.41024    0.00103
+     164   0.051   -66.41024    0.00103
+     165   0.051   -66.41024    0.00103    0.08701       4      85
+     166   0.051   -66.41024    0.00103
+     167   0.051   -66.41024    0.00103
+     168   0.051   -66.41024    0.00103
+     169   0.051   -66.41024    0.00103
+     170   0.051   -66.41024    0.00103
+     171   0.051   -66.41024    0.00103
+     172   0.051   -66.41024    0.00103
+     173   0.051   -66.41024    0.00103
+     174   0.051   -66.41024    0.00103
+     175   0.051   -66.41024    0.00103
+     176   0.051   -66.41024    0.00103
+     177   0.051   -66.41024    0.00103
+     178   0.051   -66.41024    0.00103
+     179   0.051   -66.41024    0.00103
+     180   0.051   -66.41024    0.00103
+     181   0.051   -66.41024    0.00103
+     182   0.051   -66.41024    0.00103
+     183   0.051   -66.41024    0.00103
+     184   0.051   -66.41024    0.00103
+     185   0.051   -66.41024    0.00103
+     186   0.051   -66.41024    0.00103
+     187   0.051   -66.41024    0.00103
+     188   0.051   -66.41024    0.00103
+     189   0.051   -66.41024    0.00103
+     190   0.051   -66.41024    0.00103
+     191   0.051   -66.41024    0.00103
+     192   0.051   -66.41024    0.00103
+     193   0.051   -66.41024    0.00103
+     194   0.051   -66.41024    0.00103
+     195   0.051   -66.41024    0.00103
+     196   0.051   -66.41024    0.00103
+     197   0.051   -66.41024    0.00103
+     198   0.051   -66.41024    0.00103
+     199   0.051   -66.41024    0.00103
+     200   0.051   -66.41024    0.00103
+     201   0.051   -66.41024    0.00103
+     202   0.052   -66.41024    0.00103
+     203   0.052   -66.41024    0.00103
+     204   0.052   -66.41024    0.00103
+     205   0.052   -66.41024    0.00103
+     206   0.052   -66.41024    0.00103
+     207   0.052   -66.41024    0.00103
+     208   0.052   -66.41024    0.00103
+     209   0.052   -66.41024    0.00103
+     210   0.052   -66.41024    0.00103
+     211   0.052   -66.41024    0.00103
+     212   0.052   -66.41024    0.00103
+     213   0.052   -66.41024    0.00103
+     214   0.052   -66.41024    0.00103
+     215   0.052   -66.41024    0.00103
+     216   0.052   -66.41024    0.00102
+     217   0.052   -66.41024    0.00102
+     218   0.052   -66.41024    0.00102
+     219   0.052   -66.41024    0.00102
+     220   0.052   -66.41024    0.00102
+     221   0.052   -66.41024    0.00102
+     222   0.053   -66.41024    0.00102
+     223   0.053   -66.41024    0.00102
+     224   0.053   -66.41024    0.00102
+     225   0.053   -66.41024    0.00102
+     226   0.053   -66.41024    0.00102
+     227   0.053   -66.41024    0.00102
+     228   0.054   -66.41023    0.00102
+     229   0.055   -66.41023    0.00102
+     230   0.056   -66.41023    0.00102
+     231   0.057   -66.41023    0.00102
+     232   0.058   -66.41023    0.00101
+     233   0.060   -66.41023    0.00101
+     234   0.060   -66.41023    0.00101
+     235   0.061   -66.41022    0.00101
+     236   0.061   -66.41022    0.00101
+     237   0.050   -66.41024    0.00103
+     238   0.061   -66.41022    0.00101
+     239   0.062   -66.41022    0.00101
+     240   0.050   -66.41024    0.00103
+     241   0.062   -66.41022    0.00101
+     242   0.050   -66.41024    0.00103
+     243   0.050   -66.41024    0.00103
+     244   0.050   -66.41024    0.00103
+     245   0.051   -66.41024    0.00103
+     246   0.051   -66.41024    0.00103
+     247   0.051   -66.41024    0.00103
+     248   0.069   -66.41021    0.00100
+     249   0.074   -66.41020    0.00099
+     250   0.074   -66.41020    0.00099    0.05618       5      57
+     251   0.074   -66.41020    0.00099
+     252   0.074   -66.41020    0.00099
+     253   0.074   -66.41020    0.00099
+     254   0.074   -66.41020    0.00099
+     255   0.074   -66.41020    0.00099
+     256   0.074   -66.41020    0.00099
+     257   0.074   -66.41020    0.00099
+     258   0.074   -66.41020    0.00099
+     259   0.074   -66.41020    0.00099
+     260   0.074   -66.41020    0.00099
+     261   0.074   -66.41020    0.00099
+     262   0.074   -66.41020    0.00099
+     263   0.074   -66.41020    0.00099
+     264   0.074   -66.41020    0.00099
+     265   0.074   -66.41020    0.00099
+     266   0.074   -66.41020    0.00099
+     267   0.074   -66.41020    0.00099
+     268   0.074   -66.41020    0.00099
+     269   0.074   -66.41020    0.00099
+     270   0.074   -66.41020    0.00099
+     271   0.074   -66.41020    0.00099
+     272   0.074   -66.41020    0.00099
+     273   0.074   -66.41020    0.00099
+     274   0.074   -66.41020    0.00099
+     275   0.074   -66.41020    0.00099
+     276   0.074   -66.41020    0.00099
+     277   0.074   -66.41020    0.00099
+     278   0.074   -66.41020    0.00099
+     279   0.075   -66.41020    0.00099
+     280   0.075   -66.41020    0.00099
+     281   0.075   -66.41020    0.00099
+     282   0.075   -66.41020    0.00099
+     283   0.075   -66.41020    0.00099
+     284   0.075   -66.41020    0.00099
+     285   0.075   -66.41020    0.00099
+     286   0.075   -66.41020    0.00099
+     287   0.075   -66.41020    0.00099
+     288   0.075   -66.41020    0.00099
+     289   0.075   -66.41020    0.00099
+     290   0.075   -66.41020    0.00099
+     291   0.075   -66.41020    0.00099
+     292   0.075   -66.41020    0.00099
+     293   0.075   -66.41020    0.00099
+     294   0.075   -66.41020    0.00099
+     295   0.076   -66.41020    0.00099
+     296   0.076   -66.41020    0.00098
+     297   0.076   -66.41020    0.00098
+     298   0.077   -66.41020    0.00098
+     299   0.077   -66.41020    0.00098
+     300   0.078   -66.41020    0.00098
+     301   0.079   -66.41020    0.00098
+     302   0.080   -66.41019    0.00098
+     303   0.080   -66.41019    0.00098
+     304   0.084   -66.41019    0.00097
+     305   0.085   -66.41018    0.00097
+     306   0.085   -66.41018    0.00097
+     307   0.230   -66.40995    0.00076    0.04606       6      61
+     308   0.230   -66.40995    0.00076
+     309   0.230   -66.40995    0.00076
+     310   0.230   -66.40995    0.00076
+     311   0.230   -66.40995    0.00076
+     312   0.230   -66.40995    0.00076
+     313   0.230   -66.40995    0.00076
+     314   0.231   -66.40995    0.00076
+     315   0.231   -66.40995    0.00076
+     316   0.231   -66.40995    0.00076
+     317   0.231   -66.40995    0.00076
+     318   0.231   -66.40995    0.00076
+     319   0.231   -66.40995    0.00076
+     320   0.231   -66.40995    0.00076
+     321   0.231   -66.40995    0.00076
+     322   0.231   -66.40995    0.00076
+     323   0.231   -66.40995    0.00076
+     324   0.231   -66.40995    0.00076
+     325   0.231   -66.40995    0.00076
+     326   0.231   -66.40995    0.00076
+     327   0.231   -66.40995    0.00076
+     328   0.231   -66.40995    0.00076
+     329   0.231   -66.40995    0.00076
+     330   0.231   -66.40995    0.00076
+     331   0.231   -66.40995    0.00076
+     332   0.231   -66.40995    0.00076
+     333   0.231   -66.40995    0.00076
+     334   0.231   -66.40995    0.00076
+     335   0.231   -66.40995    0.00076
+     336   0.231   -66.40995    0.00076
+     337   0.231   -66.40995    0.00076
+     338   0.231   -66.40995    0.00076
+     339   0.231   -66.40995    0.00076
+     340   0.231   -66.40995    0.00076
+     341   0.231   -66.40995    0.00076
+     342   0.231   -66.40995    0.00076
+     343   0.231   -66.40995    0.00076
+     344   0.231   -66.40995    0.00076
+     345   0.231   -66.40995    0.00076
+     346   0.231   -66.40995    0.00076
+     347   0.231   -66.40995    0.00076
+     348   0.232   -66.40995    0.00076
+     349   0.232   -66.40995    0.00076
+     350   0.232   -66.40995    0.00076
+     351   0.232   -66.40995    0.00076
+     352   0.232   -66.40995    0.00076
+     353   0.232   -66.40995    0.00076
+     354   0.232   -66.40995    0.00076
+     355   0.232   -66.40995    0.00076
+     356   0.232   -66.40995    0.00076
+     357   0.232   -66.40995    0.00076
+     358   0.233   -66.40995    0.00076
+     359   0.233   -66.40995    0.00076
+     360   0.233   -66.40995    0.00076
+     361   0.235   -66.40995    0.00075
+     362   0.251   -66.40992    0.00073
+     363   0.252   -66.40992    0.00073
+     364   0.252   -66.40992    0.00073
+     365   0.253   -66.40992    0.00073
+     366   0.253   -66.40992    0.00073
+     367   0.253   -66.40992    0.00073
+     368   0.253   -66.40992    0.00073    0.05522       7      76
+     369   0.254   -66.40992    0.00073
+     370   0.254   -66.40992    0.00073
+     371   0.254   -66.40992    0.00073
+     372   0.254   -66.40992    0.00073
+     373   0.254   -66.40992    0.00073
+     374   0.254   -66.40992    0.00073
+     375   0.254   -66.40992    0.00073
+     376   0.254   -66.40992    0.00073
+     377   0.254   -66.40992    0.00073
+     378   0.254   -66.40992    0.00073
+     379   0.254   -66.40992    0.00073
+     380   0.254   -66.40992    0.00073
+     381   0.253   -66.40992    0.00073
+     382   0.254   -66.40992    0.00073
+     383   0.254   -66.40992    0.00073
+     384   0.254   -66.40992    0.00073
+     385   0.254   -66.40992    0.00073
+     386   0.254   -66.40992    0.00073
+     387   0.254   -66.40992    0.00073
+     388   0.254   -66.40992    0.00073
+     389   0.254   -66.40992    0.00073
+     390   0.254   -66.40992    0.00073
+     391   0.254   -66.40992    0.00073
+     392   0.254   -66.40992    0.00073
+     393   0.254   -66.40992    0.00073
+     394   0.254   -66.40992    0.00073
+     395   0.254   -66.40992    0.00073
+     396   0.254   -66.40992    0.00073
+     397   0.254   -66.40992    0.00073
+     398   0.254   -66.40992    0.00073
+     399   0.254   -66.40992    0.00073
+     400   0.254   -66.40992    0.00073
+     401   0.254   -66.40992    0.00073
+     402   0.254   -66.40992    0.00073
+     403   0.254   -66.40992    0.00073
+     404   0.254   -66.40992    0.00073
+     405   0.254   -66.40992    0.00073
+     406   0.255   -66.40992    0.00073
+     407   0.255   -66.40992    0.00073
+     408   0.255   -66.40991    0.00073
+     409   0.255   -66.40991    0.00073
+     410   0.255   -66.40991    0.00073
+     411   0.255   -66.40991    0.00073
+     412   0.255   -66.40991    0.00073
+     413   0.255   -66.40991    0.00073
+     414   0.255   -66.40991    0.00073
+     415   0.255   -66.40991    0.00073
+     416   0.255   -66.40991    0.00073
+     417   0.255   -66.40991    0.00073
+     418   0.255   -66.40991    0.00073
+     419   0.255   -66.40991    0.00073
+     420   0.255   -66.40991    0.00073
+     421   0.255   -66.40991    0.00073
+     422   0.255   -66.40991    0.00073
+     423   0.255   -66.40991    0.00073
+     424   0.255   -66.40991    0.00073
+     425   0.255   -66.40991    0.00073
+     426   0.255   -66.40991    0.00073
+     427   0.255   -66.40991    0.00073
+     428   0.256   -66.40991    0.00073
+     429   0.256   -66.40991    0.00073
+     430   0.256   -66.40991    0.00073
+     431   0.256   -66.40991    0.00073
+     432   0.256   -66.40991    0.00073
+     433   0.257   -66.40991    0.00073
+     434   0.257   -66.40991    0.00073
+     435   0.257   -66.40991    0.00073
+     436   0.258   -66.40991    0.00072
+     437   0.259   -66.40991    0.00072
+     438   0.263   -66.40990    0.00072
+     439   0.275   -66.40988    0.00070
+     440   0.275   -66.40988    0.00070
+     441   0.276   -66.40988    0.00070
+     442   0.277   -66.40988    0.00070
+     443   0.278   -66.40988    0.00070
+     444   0.362   -66.40974    0.00061    0.02731       8      45
+     445   0.362   -66.40974    0.00061
+     446   0.362   -66.40974    0.00061
+     447   0.362   -66.40974    0.00061
+     448   0.362   -66.40974    0.00061
+     449   0.362   -66.40974    0.00061
+     450   0.362   -66.40974    0.00061
+     451   0.362   -66.40974    0.00061
+     452   0.362   -66.40974    0.00061
+     453   0.362   -66.40974    0.00061
+     454   0.362   -66.40974    0.00061
+     455   0.362   -66.40974    0.00061
+     456   0.362   -66.40974    0.00061
+     457   0.362   -66.40974    0.00061
+     458   0.362   -66.40974    0.00061
+     459   0.362   -66.40974    0.00061
+     460   0.362   -66.40974    0.00061
+     461   0.362   -66.40974    0.00061
+     462   0.362   -66.40974    0.00061
+     463   0.362   -66.40974    0.00061
+     464   0.362   -66.40974    0.00061
+     465   0.362   -66.40974    0.00061
+     466   0.362   -66.40974    0.00061
+     467   0.362   -66.40974    0.00061
+     468   0.362   -66.40974    0.00061
+     469   0.362   -66.40974    0.00061
+     470   0.362   -66.40974    0.00061
+     471   0.363   -66.40974    0.00061
+     472   0.363   -66.40974    0.00061
+     473   0.363   -66.40974    0.00061
+     474   0.363   -66.40974    0.00061
+     475   0.363   -66.40974    0.00061
+     476   0.363   -66.40974    0.00061
+     477   0.363   -66.40974    0.00061
+     478   0.363   -66.40974    0.00061
+     479   0.363   -66.40974    0.00061
+     480   0.363   -66.40974    0.00061
+     481   0.363   -66.40974    0.00061
+     482   0.364   -66.40974    0.00061
+     483   0.364   -66.40974    0.00061
+     484   0.365   -66.40974    0.00061
+     485   0.367   -66.40974    0.00060
+     486   0.368   -66.40973    0.00060
+     487   0.368   -66.40973    0.00060
+     488   0.368   -66.40973    0.00060
+     489   0.368   -66.40973    0.00060    0.02941       9      49
+     490   0.368   -66.40973    0.00060
+     491   0.368   -66.40973    0.00060
+     492   0.368   -66.40973    0.00060
+     493   0.367   -66.40974    0.00060
+     494   0.368   -66.40973    0.00060
+     495   0.368   -66.40973    0.00060
+     496   0.368   -66.40973    0.00060
+     497   0.368   -66.40973    0.00060
+     498   0.368   -66.40973    0.00060
+     499   0.368   -66.40973    0.00060
+     500   0.368   -66.40973    0.00060
+     501   0.368   -66.40973    0.00060
+     502   0.368   -66.40973    0.00060
+     503   0.368   -66.40973    0.00060
+     504   0.368   -66.40973    0.00060
+     505   0.368   -66.40973    0.00060
+     506   0.368   -66.40973    0.00060
+     507   0.368   -66.40973    0.00060
+     508   0.368   -66.40973    0.00060
+     509   0.368   -66.40973    0.00060
+     510   0.368   -66.40973    0.00060
+     511   0.369   -66.40973    0.00060
+     512   0.369   -66.40973    0.00060
+     513   0.369   -66.40973    0.00060
+     514   0.369   -66.40973    0.00060
+     515   0.369   -66.40973    0.00060
+     516   0.369   -66.40973    0.00060
+     517   0.369   -66.40973    0.00060
+     518   0.369   -66.40973    0.00060
+     519   0.370   -66.40973    0.00060
+     520   0.370   -66.40973    0.00060
+     521   0.370   -66.40973    0.00060
+     522   0.370   -66.40973    0.00060
+     523   0.370   -66.40973    0.00060
+     524   0.371   -66.40973    0.00060
+     525   0.371   -66.40973    0.00060
+     526   0.371   -66.40973    0.00060
+     527   0.371   -66.40973    0.00060
+     528   0.371   -66.40973    0.00060
+     529   0.372   -66.40973    0.00060
+     530   0.372   -66.40973    0.00060
+     531   0.367   -66.40974    0.00060
+     532   0.373   -66.40973    0.00060
+     533   0.376   -66.40972    0.00059
+     534   0.383   -66.40971    0.00059
+     535   0.384   -66.40971    0.00059
+     536   0.367   -66.40974    0.00060
+     537   0.367   -66.40974    0.00060
+     538   0.391   -66.40970    0.00058    0.00058      10       1
+     539   0.395   -66.40969    0.00057    0.03660      11      64
+     540   0.395   -66.40969    0.00057
+     541   0.395   -66.40969    0.00057
+     542   0.395   -66.40969    0.00057
+     543   0.395   -66.40969    0.00057
+     544   0.395   -66.40969    0.00057
+     545   0.395   -66.40969    0.00057
+     546   0.395   -66.40969    0.00057
+     547   0.396   -66.40969    0.00057
+     548   0.396   -66.40969    0.00057
+     549   0.396   -66.40969    0.00057
+     550   0.396   -66.40969    0.00057
+     551   0.396   -66.40969    0.00057
+     552   0.396   -66.40969    0.00057
+     553   0.396   -66.40969    0.00057
+     554   0.396   -66.40969    0.00057
+     555   0.396   -66.40969    0.00057
+     556   0.396   -66.40969    0.00057
+     557   0.396   -66.40969    0.00057
+     558   0.396   -66.40969    0.00057
+     559   0.396   -66.40969    0.00057
+     560   0.396   -66.40969    0.00057
+     561   0.396   -66.40969    0.00057
+     562   0.396   -66.40969    0.00057
+     563   0.396   -66.40969    0.00057
+     564   0.396   -66.40969    0.00057
+     565   0.396   -66.40969    0.00057
+     566   0.396   -66.40969    0.00057
+     567   0.396   -66.40969    0.00057
+     568   0.396   -66.40969    0.00057
+     569   0.396   -66.40969    0.00057
+     570   0.396   -66.40969    0.00057
+     571   0.396   -66.40969    0.00057
+     572   0.396   -66.40969    0.00057
+     573   0.396   -66.40969    0.00057
+     574   0.396   -66.40969    0.00057
+     575   0.396   -66.40969    0.00057
+     576   0.396   -66.40969    0.00057
+     577   0.397   -66.40969    0.00057
+     578   0.397   -66.40969    0.00057
+     579   0.397   -66.40969    0.00057
+     580   0.397   -66.40969    0.00057
+     581   0.397   -66.40969    0.00057
+     582   0.397   -66.40969    0.00057
+     583   0.397   -66.40969    0.00057
+     584   0.397   -66.40969    0.00057
+     585   0.397   -66.40969    0.00057
+     586   0.397   -66.40969    0.00057
+     587   0.397   -66.40969    0.00057
+     588   0.397   -66.40969    0.00057
+     589   0.398   -66.40969    0.00057
+     590   0.398   -66.40969    0.00057
+     591   0.398   -66.40969    0.00057
+     592   0.398   -66.40969    0.00057
+     593   0.398   -66.40969    0.00057
+     594   0.400   -66.40968    0.00057
+     595   0.401   -66.40968    0.00057
+     596   0.402   -66.40968    0.00057
+     597   0.402   -66.40968    0.00057
+     598   0.416   -66.40966    0.00055
+     599   0.416   -66.40966    0.00055
+     600   0.417   -66.40966    0.00055
+     601   0.418   -66.40965    0.00055
+     602   0.419   -66.40965    0.00055
+     603   0.464   -66.40958    0.00051    0.01837      12      36
+     604   0.464   -66.40958    0.00051
+     605   0.464   -66.40958    0.00051
+     606   0.464   -66.40958    0.00051
+     607   0.464   -66.40958    0.00051
+     608   0.464   -66.40958    0.00051
+     609   0.464   -66.40958    0.00051
+     610   0.464   -66.40958    0.00051
+     611   0.464   -66.40958    0.00051
+     612   0.464   -66.40958    0.00051
+     613   0.464   -66.40958    0.00051
+     614   0.464   -66.40958    0.00051
+     615   0.464   -66.40958    0.00051
+     616   0.464   -66.40958    0.00051
+     617   0.464   -66.40958    0.00051
+     618   0.464   -66.40958    0.00051
+     619   0.464   -66.40958    0.00051
+     620   0.464   -66.40958    0.00051
+     621   0.464   -66.40958    0.00051
+     622   0.464   -66.40958    0.00051
+     623   0.464   -66.40958    0.00051
+     624   0.465   -66.40958    0.00051
+     625   0.465   -66.40958    0.00051
+     626   0.465   -66.40958    0.00051
+     627   0.465   -66.40958    0.00051
+     628   0.465   -66.40958    0.00051
+     629   0.465   -66.40958    0.00051
+     630   0.465   -66.40958    0.00051
+     631   0.465   -66.40958    0.00051
+     632   0.465   -66.40958    0.00051
+     633   0.466   -66.40958    0.00051
+     634   0.467   -66.40958    0.00051
+     635   0.467   -66.40958    0.00051
+     636   0.467   -66.40958    0.00051
+     637   0.487   -66.40954    0.00049
+     638   0.488   -66.40954    0.00049
+     639   0.494   -66.40953    0.00049    0.02563      13      53
+     640   0.494   -66.40953    0.00049
+     641   0.494   -66.40953    0.00049
+     642   0.494   -66.40953    0.00049
+     643   0.494   -66.40953    0.00049
+     644   0.494   -66.40953    0.00049
+     645   0.495   -66.40953    0.00049
+     646   0.495   -66.40953    0.00049
+     647   0.495   -66.40953    0.00049
+     648   0.495   -66.40953    0.00049
+     649   0.495   -66.40953    0.00049
+     650   0.495   -66.40953    0.00049
+     651   0.495   -66.40953    0.00049
+     652   0.495   -66.40953    0.00049
+     653   0.495   -66.40953    0.00049
+     654   0.495   -66.40953    0.00049
+     655   0.495   -66.40953    0.00049
+     656   0.495   -66.40953    0.00049
+     657   0.495   -66.40953    0.00049
+     658   0.495   -66.40953    0.00049
+     659   0.495   -66.40953    0.00049
+     660   0.495   -66.40953    0.00049
+     661   0.495   -66.40953    0.00049
+     662   0.495   -66.40953    0.00049
+     663   0.495   -66.40953    0.00049
+     664   0.495   -66.40953    0.00049
+     665   0.495   -66.40953    0.00049
+     666   0.495   -66.40953    0.00049
+     667   0.495   -66.40953    0.00049
+     668   0.495   -66.40953    0.00049
+     669   0.495   -66.40953    0.00049
+     670   0.495   -66.40953    0.00049
+     671   0.496   -66.40953    0.00049
+     672   0.496   -66.40953    0.00049
+     673   0.496   -66.40953    0.00049
+     674   0.496   -66.40953    0.00049
+     675   0.496   -66.40953    0.00048
+     676   0.496   -66.40953    0.00048
+     677   0.496   -66.40953    0.00048
+     678   0.497   -66.40953    0.00048
+     679   0.497   -66.40953    0.00048
+     680   0.497   -66.40953    0.00048
+     681   0.497   -66.40953    0.00048
+     682   0.497   -66.40953    0.00048
+     683   0.498   -66.40953    0.00048
+     684   0.502   -66.40952    0.00048
+     685   0.504   -66.40952    0.00048
+     686   0.511   -66.40951    0.00047
+     687   0.512   -66.40951    0.00047
+     688   0.512   -66.40951    0.00047
+     689   0.513   -66.40950    0.00047
+     690   0.515   -66.40950    0.00047
+     691   0.517   -66.40950    0.00047
+     692   0.545   -66.40945    0.00045    0.03073      14      69
+     693   0.545   -66.40945    0.00045
+     694   0.545   -66.40945    0.00045
+     695   0.545   -66.40945    0.00045
+     696   0.546   -66.40945    0.00045
+     697   0.546   -66.40945    0.00045
+     698   0.546   -66.40945    0.00045
+     699   0.546   -66.40945    0.00045
+     700   0.546   -66.40945    0.00045
+     701   0.546   -66.40945    0.00045
+     702   0.546   -66.40945    0.00045
+     703   0.546   -66.40945    0.00045
+     704   0.546   -66.40945    0.00045
+     705   0.546   -66.40945    0.00045
+     706   0.546   -66.40945    0.00045
+     707   0.546   -66.40945    0.00045
+     708   0.546   -66.40945    0.00045
+     709   0.546   -66.40945    0.00045
+     710   0.546   -66.40945    0.00045
+     711   0.546   -66.40945    0.00045
+     712   0.546   -66.40945    0.00045
+     713   0.546   -66.40945    0.00045
+     714   0.546   -66.40945    0.00045
+     715   0.546   -66.40945    0.00045
+     716   0.546   -66.40945    0.00045
+     717   0.546   -66.40945    0.00045
+     718   0.546   -66.40945    0.00045
+     719   0.546   -66.40945    0.00045
+     720   0.547   -66.40945    0.00044
+     721   0.546   -66.40945    0.00045
+     722   0.547   -66.40945    0.00044
+     723   0.546   -66.40945    0.00045
+     724   0.546   -66.40945    0.00045
+     725   0.546   -66.40945    0.00045
+     726   0.546   -66.40945    0.00045
+     727   0.547   -66.40945    0.00044
+     728   0.547   -66.40945    0.00044
+     729   0.546   -66.40945    0.00045
+     730   0.547   -66.40945    0.00044
+     731   0.546   -66.40945    0.00045
+     732   0.547   -66.40945    0.00044
+     733   0.546   -66.40945    0.00045
+     734   0.547   -66.40945    0.00044
+     735   0.547   -66.40945    0.00044
+     736   0.547   -66.40945    0.00044
+     737   0.546   -66.40945    0.00045
+     738   0.546   -66.40945    0.00045
+     739   0.546   -66.40945    0.00045
+     740   0.547   -66.40945    0.00044
+     741   0.547   -66.40945    0.00044
+     742   0.547   -66.40945    0.00044
+     743   0.546   -66.40945    0.00045
+     744   0.547   -66.40945    0.00044
+     745   0.547   -66.40945    0.00044
+     746   0.546   -66.40945    0.00045
+     747   0.547   -66.40945    0.00044
+     748   0.547   -66.40945    0.00044
+     749   0.547   -66.40945    0.00044
+     750   0.547   -66.40945    0.00044
+     751   0.546   -66.40945    0.00045
+     752   0.546   -66.40945    0.00045
+     753   0.547   -66.40945    0.00044
+     754   0.547   -66.40945    0.00044
+     755   0.548   -66.40945    0.00044
+     756   0.548   -66.40945    0.00044
+     757   0.546   -66.40945    0.00045
+     758   0.546   -66.40945    0.00045
+     759   0.546   -66.40945    0.00045
+     760   0.548   -66.40945    0.00044
+     761   0.548   -66.40945    0.00044    0.04684      15     108
+     762   0.548   -66.40945    0.00044
+     763   0.548   -66.40945    0.00044
+     764   0.548   -66.40945    0.00044
+     765   0.546   -66.40945    0.00045
+     766   0.548   -66.40945    0.00044
+     767   0.547   -66.40945    0.00045
+     768   0.548   -66.40945    0.00044
+     769   0.548   -66.40945    0.00044
+     770   0.547   -66.40945    0.00045
+     771   0.548   -66.40945    0.00044
+     772   0.548   -66.40945    0.00044
+     773   0.548   -66.40945    0.00044
+     774   0.548   -66.40945    0.00044
+     775   0.547   -66.40945    0.00045
+     776   0.548   -66.40945    0.00044
+     777   0.548   -66.40945    0.00044
+     778   0.547   -66.40945    0.00045
+     779   0.549   -66.40945    0.00044
+     780   0.547   -66.40945    0.00045
+     781   0.547   -66.40945    0.00045
+     782   0.549   -66.40945    0.00044
+     783   0.550   -66.40944    0.00044
+     784   0.550   -66.40944    0.00044
+     785   0.547   -66.40945    0.00045
+     786   0.547   -66.40945    0.00045
+     787   0.547   -66.40945    0.00045
+     788   0.547   -66.40945    0.00045
+     789   0.547   -66.40945    0.00045
+     790   0.551   -66.40944    0.00044
+     791   0.551   -66.40944    0.00044
+     792   0.551   -66.40944    0.00044
+     793   0.552   -66.40944    0.00044
+     794   0.552   -66.40944    0.00044
+     795   0.561   -66.40943    0.00043
+     796   0.561   -66.40943    0.00043
+     797   0.561   -66.40943    0.00043
+     798   0.561   -66.40943    0.00043
+     799   0.547   -66.40945    0.00045
+     800   0.547   -66.40945    0.00045
+     801   0.561   -66.40943    0.00043
+     802   0.547   -66.40945    0.00045
+     803   0.547   -66.40945    0.00045
+     804   0.547   -66.40945    0.00045
+     805   0.561   -66.40943    0.00043
+     806   0.578   -66.40940    0.00042
+     807   0.579   -66.40940    0.00042
+     808   0.579   -66.40940    0.00042
+     809   0.579   -66.40940    0.00042
+     810   0.579   -66.40940    0.00042
+     811   0.579   -66.40940    0.00042
+     812   0.579   -66.40940    0.00042
+     813   0.579   -66.40940    0.00042
+     814   0.579   -66.40940    0.00042
+     815   0.579   -66.40940    0.00042
+     816   0.579   -66.40940    0.00042
+     817   0.579   -66.40940    0.00042
+     818   0.579   -66.40940    0.00042
+     819   0.579   -66.40940    0.00042
+     820   0.579   -66.40940    0.00042
+     821   0.579   -66.40940    0.00042
+     822   0.579   -66.40940    0.00042
+     823   0.579   -66.40940    0.00042
+     824   0.579   -66.40940    0.00042
+     825   0.579   -66.40940    0.00042
+     826   0.579   -66.40940    0.00042
+     827   0.579   -66.40940    0.00042
+     828   0.579   -66.40940    0.00042
+     829   0.579   -66.40940    0.00042
+     830   0.579   -66.40940    0.00042
+     831   0.579   -66.40940    0.00042
+     832   0.579   -66.40940    0.00042
+     833   0.579   -66.40940    0.00042
+     834   0.579   -66.40940    0.00042
+     835   0.579   -66.40940    0.00042
+     836   0.547   -66.40945    0.00045
+     837   0.580   -66.40940    0.00042
+     838   0.580   -66.40940    0.00042
+     839   0.580   -66.40940    0.00042
+     840   0.580   -66.40940    0.00042
+     841   0.580   -66.40940    0.00042
+     842   0.580   -66.40940    0.00042
+     843   0.547   -66.40945    0.00045
+     844   0.547   -66.40945    0.00045
+     845   0.547   -66.40945    0.00045
+     846   0.547   -66.40945    0.00045
+     847   0.547   -66.40945    0.00045
+     848   0.580   -66.40940    0.00042
+     849   0.581   -66.40939    0.00042
+     850   0.582   -66.40939    0.00042
+     851   0.561   -66.40943    0.00043
+     852   0.561   -66.40943    0.00043
+     853   0.561   -66.40943    0.00043
+     854   0.561   -66.40943    0.00043
+     855   0.561   -66.40943    0.00043
+     856   0.561   -66.40943    0.00043
+     857   0.561   -66.40943    0.00043
+     858   0.582   -66.40939    0.00042
+     859   0.561   -66.40943    0.00043
+     860   0.562   -66.40943    0.00043
+     861   0.562   -66.40943    0.00043
+     862   0.562   -66.40943    0.00043
+     863   0.562   -66.40943    0.00043
+     864   0.562   -66.40943    0.00043
+     865   0.562   -66.40943    0.00043
+     866   0.562   -66.40943    0.00043
+     867   0.562   -66.40943    0.00043
+     868   0.562   -66.40942    0.00043
+     869   0.562   -66.40942    0.00043    0.01751      16      41
+     870   0.562   -66.40942    0.00043
+     871   0.562   -66.40942    0.00043
+     872   0.562   -66.40942    0.00043
+     873   0.563   -66.40942    0.00043
+     874   0.563   -66.40942    0.00043
+     875   0.563   -66.40942    0.00043
+     876   0.563   -66.40942    0.00043
+     877   0.563   -66.40942    0.00043
+     878   0.563   -66.40942    0.00043
+     879   0.563   -66.40942    0.00043
+     880   0.563   -66.40942    0.00043
+     881   0.563   -66.40942    0.00043
+     882   0.564   -66.40942    0.00043
+     883   0.565   -66.40942    0.00043
+     884   0.565   -66.40942    0.00043
+     885   0.566   -66.40942    0.00043
+     886   0.567   -66.40942    0.00043
+     887   0.567   -66.40942    0.00043
+     888   0.569   -66.40941    0.00043
+     889   0.576   -66.40940    0.00042
+     890   0.576   -66.40940    0.00042
+     891   0.578   -66.40940    0.00042
+     892   0.578   -66.40940    0.00042
+     893   0.578   -66.40940    0.00042
+     894   0.578   -66.40940    0.00042
+     895   0.578   -66.40940    0.00042
+     896   0.583   -66.40939    0.00042
+     897   0.578   -66.40940    0.00042
+     898   0.578   -66.40940    0.00042
+     899   0.578   -66.40940    0.00042
+     900   0.578   -66.40940    0.00042
+     901   0.578   -66.40940    0.00042
+     902   0.578   -66.40940    0.00042
+     903   0.578   -66.40940    0.00042
+     904   0.578   -66.40940    0.00042
+     905   0.578   -66.40940    0.00042
+     906   0.578   -66.40940    0.00042
+     907   0.578   -66.40940    0.00042
+     908   0.578   -66.40940    0.00042
+     909   0.578   -66.40940    0.00042
+     910   0.591   -66.40938    0.00041    0.02513      17      61
+     911   0.591   -66.40938    0.00041
+     912   0.591   -66.40938    0.00041
+     913   0.591   -66.40938    0.00041
+     914   0.591   -66.40938    0.00041
+     915   0.591   -66.40938    0.00041
+     916   0.591   -66.40938    0.00041
+     917   0.591   -66.40938    0.00041
+     918   0.591   -66.40938    0.00041
+     919   0.591   -66.40938    0.00041
+     920   0.591   -66.40938    0.00041
+     921   0.591   -66.40938    0.00041
+     922   0.592   -66.40938    0.00041
+     923   0.592   -66.40938    0.00041
+     924   0.592   -66.40938    0.00041
+     925   0.592   -66.40938    0.00041
+     926   0.592   -66.40938    0.00041
+     927   0.592   -66.40938    0.00041
+     928   0.592   -66.40938    0.00041
+     929   0.592   -66.40938    0.00041
+     930   0.592   -66.40938    0.00041
+     931   0.592   -66.40938    0.00041
+     932   0.592   -66.40938    0.00041
+     933   0.592   -66.40938    0.00041
+     934   0.592   -66.40938    0.00041
+     935   0.592   -66.40938    0.00041
+     936   0.592   -66.40938    0.00041
+     937   0.592   -66.40938    0.00041
+     938   0.592   -66.40938    0.00041
+     939   0.592   -66.40938    0.00041
+     940   0.592   -66.40938    0.00041
+     941   0.592   -66.40938    0.00041
+     942   0.592   -66.40938    0.00041
+     943   0.592   -66.40938    0.00041
+     944   0.592   -66.40938    0.00041
+     945   0.592   -66.40938    0.00041
+     946   0.592   -66.40938    0.00041
+     947   0.592   -66.40938    0.00041
+     948   0.592   -66.40938    0.00041
+     949   0.592   -66.40938    0.00041
+     950   0.592   -66.40938    0.00041
+     951   0.592   -66.40938    0.00041
+     952   0.592   -66.40938    0.00041
+     953   0.592   -66.40938    0.00041
+     954   0.592   -66.40938    0.00041
+     955   0.592   -66.40938    0.00041
+     956   0.592   -66.40938    0.00041
+     957   0.592   -66.40938    0.00041
+     958   0.593   -66.40938    0.00041
+     959   0.593   -66.40938    0.00041
+     960   0.593   -66.40938    0.00041
+     961   0.593   -66.40938    0.00041
+     962   0.593   -66.40937    0.00041
+     963   0.594   -66.40937    0.00041
+     964   0.594   -66.40937    0.00041
+     965   0.594   -66.40937    0.00041
+     966   0.595   -66.40937    0.00041
+     967   0.600   -66.40936    0.00041
+     968   0.600   -66.40936    0.00041
+     969   0.600   -66.40936    0.00041
+     970   0.600   -66.40936    0.00041
+     971   0.600   -66.40936    0.00041    0.01981      18      49
+     972   0.600   -66.40936    0.00041
+     973   0.600   -66.40936    0.00041
+     974   0.601   -66.40936    0.00041
+     975   0.601   -66.40936    0.00041
+     976   0.601   -66.40936    0.00041
+     977   0.601   -66.40936    0.00041
+     978   0.601   -66.40936    0.00041
+     979   0.601   -66.40936    0.00041
+     980   0.601   -66.40936    0.00041
+     981   0.601   -66.40936    0.00041
+     982   0.601   -66.40936    0.00041
+     983   0.601   -66.40936    0.00041
+     984   0.601   -66.40936    0.00041
+     985   0.601   -66.40936    0.00041
+     986   0.601   -66.40936    0.00041
+     987   0.601   -66.40936    0.00041
+     988   0.601   -66.40936    0.00041
+     989   0.601   -66.40936    0.00041
+     990   0.601   -66.40936    0.00041
+     991   0.601   -66.40936    0.00041
+     992   0.601   -66.40936    0.00041
+     993   0.601   -66.40936    0.00041
+     994   0.601   -66.40936    0.00041
+     995   0.601   -66.40936    0.00041
+     996   0.601   -66.40936    0.00041
+     997   0.601   -66.40936    0.00041
+     998   0.602   -66.40936    0.00041
+     999   0.602   -66.40936    0.00041
+    1000   0.602   -66.40936    0.00041
+    1001   0.602   -66.40936    0.00041
+    1002   0.602   -66.40936    0.00041
+    1003   0.602   -66.40936    0.00041
+    1004   0.604   -66.40936    0.00040
+    1005   0.604   -66.40936    0.00040
+    1006   0.604   -66.40936    0.00040
+    1007   0.611   -66.40935    0.00040
+    1008   0.612   -66.40935    0.00040
+    1009   0.612   -66.40935    0.00040
+    1010   0.612   -66.40935    0.00040
+    1011   0.600   -66.40936    0.00041
+    1012   0.612   -66.40935    0.00040
+    1013   0.612   -66.40935    0.00040
+    1014   0.612   -66.40934    0.00040
+    1015   0.612   -66.40934    0.00040
+    1016   0.612   -66.40934    0.00040
+    1017   0.612   -66.40934    0.00040
+    1018   0.612   -66.40934    0.00040
+    1019   0.612   -66.40934    0.00040
+    1020   0.612   -66.40934    0.00040    0.02300      19      58
+    1021   0.612   -66.40934    0.00040
+    1022   0.612   -66.40934    0.00040
+    1023   0.613   -66.40934    0.00040
+    1024   0.613   -66.40934    0.00040
+    1025   0.613   -66.40934    0.00040
+    1026   0.613   -66.40934    0.00040
+    1027   0.613   -66.40934    0.00040
+    1028   0.613   -66.40934    0.00040
+    1029   0.613   -66.40934    0.00040
+    1030   0.613   -66.40934    0.00040
+    1031   0.613   -66.40934    0.00040
+    1032   0.613   -66.40934    0.00040
+    1033   0.613   -66.40934    0.00040
+    1034   0.613   -66.40934    0.00040
+    1035   0.613   -66.40934    0.00040
+    1036   0.613   -66.40934    0.00040
+    1037   0.613   -66.40934    0.00040
+    1038   0.613   -66.40934    0.00040
+    1039   0.613   -66.40934    0.00040
+    1040   0.613   -66.40934    0.00040
+    1041   0.613   -66.40934    0.00040
+    1042   0.613   -66.40934    0.00040
+    1043   0.613   -66.40934    0.00040
+    1044   0.614   -66.40934    0.00040
+    1045   0.614   -66.40934    0.00040
+    1046   0.614   -66.40934    0.00040
+    1047   0.614   -66.40934    0.00040
+    1048   0.614   -66.40934    0.00040
+    1049   0.614   -66.40934    0.00040
+    1050   0.614   -66.40934    0.00040
+    1051   0.614   -66.40934    0.00040
+    1052   0.615   -66.40934    0.00040
+    1053   0.615   -66.40934    0.00040
+    1054   0.600   -66.40936    0.00041
+    1055   0.617   -66.40934    0.00040
+    1056   0.600   -66.40936    0.00041
+    1057   0.600   -66.40936    0.00041
+    1058   0.617   -66.40934    0.00040
+    1059   0.618   -66.40934    0.00039
+    1060   0.622   -66.40933    0.00039
+    1061   0.612   -66.40935    0.00040
+    1062   0.612   -66.40935    0.00040
+    1063   0.612   -66.40935    0.00040
+    1064   0.612   -66.40935    0.00040
+    1065   0.625   -66.40933    0.00039
+    1066   0.625   -66.40933    0.00039
+    1067   0.625   -66.40933    0.00039
+    1068   0.625   -66.40933    0.00039
+    1069   0.625   -66.40933    0.00039
+    1070   0.625   -66.40932    0.00039
+    1071   0.625   -66.40932    0.00039
+    1072   0.625   -66.40932    0.00039
+    1073   0.625   -66.40932    0.00039
+    1074   0.625   -66.40932    0.00039
+    1075   0.624   -66.40933    0.00039
+    1076   0.625   -66.40932    0.00039
+    1077   0.625   -66.40932    0.00039
+    1078   0.625   -66.40932    0.00039    0.01007      20      26
+    1079   0.625   -66.40932    0.00039
+    1080   0.625   -66.40932    0.00039
+    1081   0.627   -66.40932    0.00039
+    1082   0.627   -66.40932    0.00039
+    1083   0.624   -66.40933    0.00039
+    1084   0.631   -66.40932    0.00039
+    1085   0.624   -66.40933    0.00039
+    1086   0.633   -66.40931    0.00038
+    1087   0.634   -66.40931    0.00038
+    1088   0.624   -66.40933    0.00039
+    1089   0.624   -66.40933    0.00039
+    1090   0.634   -66.40931    0.00038
+    1091   0.624   -66.40933    0.00039
+    1092   0.634   -66.40931    0.00038
+    1093   0.636   -66.40931    0.00038
+    1094   0.643   -66.40930    0.00038
+    1095   0.624   -66.40933    0.00039
+    1096   0.624   -66.40933    0.00039
+    1097   0.624   -66.40933    0.00039
+    1098   0.624   -66.40933    0.00039
+    1099   0.624   -66.40933    0.00039
+    1100   0.624   -66.40933    0.00039
+    1101   0.647   -66.40929    0.00038
+    1102   0.625   -66.40933    0.00039
+    1103   0.648   -66.40929    0.00038
+    1104   0.673   -66.40925    0.00036    0.04002      21     112
+    1105   0.673   -66.40925    0.00036
+    1106   0.673   -66.40925    0.00036
+    1107   0.673   -66.40925    0.00036
+    1108   0.673   -66.40925    0.00036
+    1109   0.673   -66.40925    0.00036
+    1110   0.673   -66.40925    0.00036
+    1111   0.673   -66.40925    0.00036
+    1112   0.673   -66.40925    0.00036
+    1113   0.673   -66.40925    0.00036
+    1114   0.673   -66.40925    0.00036
+    1115   0.673   -66.40925    0.00036
+    1116   0.673   -66.40925    0.00036
+    1117   0.673   -66.40925    0.00036
+    1118   0.673   -66.40925    0.00036
+    1119   0.673   -66.40925    0.00036
+    1120   0.673   -66.40925    0.00036
+    1121   0.673   -66.40925    0.00036
+    1122   0.673   -66.40925    0.00036
+    1123   0.673   -66.40925    0.00036
+    1124   0.674   -66.40925    0.00036
+    1125   0.674   -66.40925    0.00036
+    1126   0.674   -66.40925    0.00036
+    1127   0.674   -66.40925    0.00036
+    1128   0.674   -66.40925    0.00036
+    1129   0.674   -66.40925    0.00036
+    1130   0.674   -66.40925    0.00036
+    1131   0.674   -66.40925    0.00036
+    1132   0.674   -66.40925    0.00036
+    1133   0.674   -66.40925    0.00036
+    1134   0.674   -66.40925    0.00036
+    1135   0.674   -66.40925    0.00036
+    1136   0.674   -66.40925    0.00036
+    1137   0.674   -66.40925    0.00036
+    1138   0.674   -66.40925    0.00036
+    1139   0.674   -66.40925    0.00036
+    1140   0.674   -66.40925    0.00036
+    1141   0.675   -66.40925    0.00036
+    1142   0.675   -66.40924    0.00036
+    1143   0.675   -66.40924    0.00036
+    1144   0.675   -66.40924    0.00036
+    1145   0.676   -66.40924    0.00036
+    1146   0.676   -66.40924    0.00036
+    1147   0.676   -66.40924    0.00036
+    1148   0.676   -66.40924    0.00036
+    1149   0.676   -66.40924    0.00036
+    1150   0.676   -66.40924    0.00036
+    1151   0.676   -66.40924    0.00036
+    1152   0.676   -66.40924    0.00036
+    1153   0.676   -66.40924    0.00036
+    1154   0.676   -66.40924    0.00036
+    1155   0.676   -66.40924    0.00036
+    1156   0.676   -66.40924    0.00036
+    1157   0.676   -66.40924    0.00036
+    1158   0.676   -66.40924    0.00036
+    1159   0.676   -66.40924    0.00036
+    1160   0.676   -66.40924    0.00036
+    1161   0.676   -66.40924    0.00036
+    1162   0.676   -66.40924    0.00036
+    1163   0.676   -66.40924    0.00036
+    1164   0.676   -66.40924    0.00036
+    1165   0.676   -66.40924    0.00036
+    1166   0.676   -66.40924    0.00036
+    1167   0.676   -66.40924    0.00036
+    1168   0.676   -66.40924    0.00036
+    1169   0.676   -66.40924    0.00036
+    1170   0.676   -66.40924    0.00036
+    1171   0.676   -66.40924    0.00036
+    1172   0.676   -66.40924    0.00036
+    1173   0.676   -66.40924    0.00036
+    1174   0.676   -66.40924    0.00036
+    1175   0.676   -66.40924    0.00036
+    1176   0.676   -66.40924    0.00036
+    1177   0.676   -66.40924    0.00036
+    1178   0.676   -66.40924    0.00036
+    1179   0.676   -66.40924    0.00036
+    1180   0.676   -66.40924    0.00036
+    1181   0.676   -66.40924    0.00036
+    1182   0.677   -66.40924    0.00036
+    1183   0.677   -66.40924    0.00036
+    1184   0.677   -66.40924    0.00036
+    1185   0.677   -66.40924    0.00036
+    1186   0.677   -66.40924    0.00036
+    1187   0.677   -66.40924    0.00036
+    1188   0.677   -66.40924    0.00036
+    1189   0.677   -66.40924    0.00036
+    1190   0.677   -66.40924    0.00036
+    1191   0.677   -66.40924    0.00036
+    1192   0.677   -66.40924    0.00036
+    1193   0.677   -66.40924    0.00036
+    1194   0.677   -66.40924    0.00036
+    1195   0.677   -66.40924    0.00036
+    1196   0.677   -66.40924    0.00036
+    1197   0.678   -66.40924    0.00036
+    1198   0.678   -66.40924    0.00036
+    1199   0.694   -66.40922    0.00035
+    1200   0.678   -66.40924    0.00036
+    1201   0.679   -66.40924    0.00036
+    1202   0.694   -66.40921    0.00035
+    1203   0.694   -66.40921    0.00035
+    1204   0.694   -66.40921    0.00035
+    1205   0.679   -66.40924    0.00036
+    1206   0.679   -66.40924    0.00036
+    1207   0.681   -66.40924    0.00036
+    1208   0.681   -66.40924    0.00035
+    1209   0.684   -66.40923    0.00035
+    1210   0.694   -66.40921    0.00035
+    1211   0.687   -66.40923    0.00035
+    1212   0.694   -66.40921    0.00035
+    1213   0.694   -66.40921    0.00035
+    1214   0.694   -66.40921    0.00035
+    1215   0.694   -66.40921    0.00035
+    1216   0.694   -66.40921    0.00035    0.00139      22       4
+    1217   0.694   -66.40921    0.00035
+    1218   0.694   -66.40921    0.00035
+    1219   0.694   -66.40921    0.00035
+    1220   0.694   -66.40921    0.00035    0.00035      23       1
+    1221   0.694   -66.40921    0.00035    0.03009      24      87
+    1222   0.689   -66.40922    0.00035
+    1223   0.694   -66.40921    0.00035
+    1224   0.694   -66.40921    0.00035
+    1225   0.694   -66.40921    0.00035
+    1226   0.694   -66.40921    0.00035
+    1227   0.694   -66.40921    0.00035
+    1228   0.694   -66.40921    0.00035
+    1229   0.694   -66.40921    0.00035
+    1230   0.695   -66.40921    0.00035
+    1231   0.695   -66.40921    0.00035
+    1232   0.695   -66.40921    0.00035
+    1233   0.695   -66.40921    0.00035
+    1234   0.695   -66.40921    0.00035
+    1235   0.695   -66.40921    0.00035
+    1236   0.695   -66.40921    0.00035
+    1237   0.695   -66.40921    0.00035
+    1238   0.695   -66.40921    0.00035
+    1239   0.695   -66.40921    0.00035
+    1240   0.696   -66.40921    0.00035
+    1241   0.691   -66.40922    0.00035
+    1242   0.691   -66.40922    0.00035
+    1243   0.696   -66.40921    0.00035
+    1244   0.694   -66.40922    0.00035
+    1245   0.694   -66.40922    0.00035
+    1246   0.696   -66.40921    0.00035
+    1247   0.696   -66.40921    0.00035
+    1248   0.696   -66.40921    0.00035
+    1249   0.696   -66.40921    0.00035
+    1250   0.696   -66.40921    0.00035
+    1251   0.696   -66.40921    0.00035
+    1252   0.696   -66.40921    0.00035
+    1253   0.696   -66.40921    0.00035
+    1254   0.696   -66.40921    0.00035
+    1255   0.696   -66.40921    0.00035
+    1256   0.696   -66.40921    0.00035
+    1257   0.696   -66.40921    0.00035
+    1258   0.696   -66.40921    0.00035
+    1259   0.696   -66.40921    0.00035
+    1260   0.696   -66.40921    0.00035
+    1261   0.696   -66.40921    0.00035
+    1262   0.696   -66.40921    0.00035
+    1263   0.696   -66.40921    0.00035
+    1264   0.696   -66.40921    0.00035
+    1265   0.696   -66.40921    0.00035
+    1266   0.696   -66.40921    0.00035
+    1267   0.696   -66.40921    0.00035
+    1268   0.696   -66.40921    0.00035
+    1269   0.696   -66.40921    0.00035
+    1270   0.696   -66.40921    0.00035
+    1271   0.696   -66.40921    0.00035
+    1272   0.696   -66.40921    0.00035
+    1273   0.696   -66.40921    0.00035
+    1274   0.696   -66.40921    0.00035
+    1275   0.696   -66.40921    0.00035
+    1276   0.696   -66.40921    0.00035
+    1277   0.696   -66.40921    0.00035
+    1278   0.696   -66.40921    0.00035
+    1279   0.697   -66.40921    0.00035
+    1280   0.697   -66.40921    0.00035
+    1281   0.697   -66.40921    0.00035
+    1282   0.697   -66.40921    0.00035
+    1283   0.697   -66.40921    0.00035
+    1284   0.697   -66.40921    0.00035
+    1285   0.697   -66.40921    0.00035
+    1286   0.697   -66.40921    0.00035
+    1287   0.697   -66.40921    0.00035
+    1288   0.694   -66.40922    0.00035
+    1289   0.697   -66.40921    0.00035
+    1290   0.697   -66.40921    0.00035
+    1291   0.697   -66.40921    0.00035
+    1292   0.698   -66.40921    0.00035
+    1293   0.698   -66.40921    0.00035
+    1294   0.698   -66.40921    0.00035
+    1295   0.698   -66.40921    0.00035
+    1296   0.694   -66.40922    0.00035
+    1297   0.698   -66.40921    0.00035
+    1298   0.694   -66.40922    0.00035
+    1299   0.698   -66.40921    0.00035
+    1300   0.699   -66.40921    0.00034
+    1301   0.694   -66.40922    0.00035
+    1302   0.699   -66.40921    0.00034
+    1303   0.694   -66.40921    0.00035
+    1304   0.712   -66.40919    0.00034
+    1305   0.714   -66.40918    0.00034
+    1306   0.717   -66.40918    0.00033
+    1307   0.712   -66.40919    0.00034
+    1308   0.713   -66.40918    0.00034    0.00067      25       2
+    1309   0.714   -66.40918    0.00034
+    1310   0.752   -66.40912    0.00032    0.02041      26      65
+    1311   0.752   -66.40912    0.00031
+    1312   0.752   -66.40912    0.00031
+    1313   0.752   -66.40912    0.00031
+    1314   0.752   -66.40912    0.00031
+    1315   0.752   -66.40912    0.00031
+    1316   0.752   -66.40912    0.00031
+    1317   0.752   -66.40912    0.00031
+    1318   0.752   -66.40912    0.00031
+    1319   0.752   -66.40912    0.00031
+    1320   0.752   -66.40912    0.00031
+    1321   0.752   -66.40912    0.00031
+    1322   0.752   -66.40912    0.00031
+    1323   0.752   -66.40912    0.00031
+    1324   0.752   -66.40912    0.00031
+    1325   0.752   -66.40912    0.00031
+    1326   0.752   -66.40912    0.00031
+    1327   0.752   -66.40912    0.00031
+    1328   0.752   -66.40912    0.00031
+    1329   0.752   -66.40912    0.00031
+    1330   0.753   -66.40912    0.00031
+    1331   0.753   -66.40912    0.00031
+    1332   0.753   -66.40912    0.00031
+    1333   0.753   -66.40912    0.00031
+    1334   0.753   -66.40912    0.00031
+    1335   0.753   -66.40912    0.00031
+    1336   0.753   -66.40912    0.00031
+    1337   0.753   -66.40912    0.00031
+    1338   0.753   -66.40912    0.00031
+    1339   0.753   -66.40912    0.00031
+    1340   0.753   -66.40912    0.00031
+    1341   0.753   -66.40912    0.00031
+    1342   0.753   -66.40912    0.00031
+    1343   0.753   -66.40912    0.00031
+    1344   0.753   -66.40912    0.00031
+    1345   0.753   -66.40912    0.00031
+    1346   0.753   -66.40912    0.00031
+    1347   0.753   -66.40912    0.00031
+    1348   0.753   -66.40912    0.00031
+    1349   0.753   -66.40912    0.00031
+    1350   0.753   -66.40912    0.00031
+    1351   0.753   -66.40912    0.00031
+    1352   0.754   -66.40912    0.00031
+    1353   0.754   -66.40912    0.00031
+    1354   0.754   -66.40912    0.00031
+    1355   0.754   -66.40912    0.00031
+    1356   0.754   -66.40912    0.00031
+    1357   0.754   -66.40912    0.00031
+    1358   0.754   -66.40912    0.00031
+    1359   0.754   -66.40912    0.00031
+    1360   0.754   -66.40912    0.00031
+    1361   0.754   -66.40912    0.00031
+    1362   0.754   -66.40912    0.00031
+    1363   0.755   -66.40912    0.00031
+    1364   0.755   -66.40912    0.00031
+    1365   0.755   -66.40912    0.00031
+    1366   0.755   -66.40912    0.00031
+    1367   0.755   -66.40912    0.00031
+    1368   0.755   -66.40912    0.00031
+    1369   0.756   -66.40912    0.00031
+    1370   0.757   -66.40911    0.00031
+    1371   0.758   -66.40911    0.00031
+    1372   0.761   -66.40911    0.00031
+    1373   0.764   -66.40910    0.00031
+    1374   0.764   -66.40910    0.00031
+    1375   0.764   -66.40910    0.00031    0.01410      27      46
+    1376   0.764   -66.40910    0.00031
+    1377   0.764   -66.40910    0.00031
+    1378   0.764   -66.40910    0.00031
+    1379   0.764   -66.40910    0.00031
+    1380   0.764   -66.40910    0.00031
+    1381   0.764   -66.40910    0.00031
+    1382   0.764   -66.40910    0.00031
+    1383   0.764   -66.40910    0.00031
+    1384   0.764   -66.40910    0.00031
+    1385   0.764   -66.40910    0.00031
+    1386   0.764   -66.40910    0.00031
+    1387   0.764   -66.40910    0.00031
+    1388   0.764   -66.40910    0.00031
+    1389   0.764   -66.40910    0.00031
+    1390   0.764   -66.40910    0.00031
+    1391   0.764   -66.40910    0.00031
+    1392   0.765   -66.40910    0.00031
+    1393   0.765   -66.40910    0.00031
+    1394   0.765   -66.40910    0.00031
+    1395   0.765   -66.40910    0.00031
+    1396   0.765   -66.40910    0.00031
+    1397   0.765   -66.40910    0.00031
+    1398   0.765   -66.40910    0.00031
+    1399   0.765   -66.40910    0.00031
+    1400   0.766   -66.40910    0.00031
+    1401   0.766   -66.40910    0.00031
+    1402   0.766   -66.40910    0.00031
+    1403   0.766   -66.40910    0.00031
+    1404   0.766   -66.40910    0.00031
+    1405   0.766   -66.40910    0.00031
+    1406   0.767   -66.40910    0.00031
+    1407   0.768   -66.40910    0.00031
+    1408   0.768   -66.40910    0.00031
+    1409   0.768   -66.40910    0.00031
+    1410   0.768   -66.40910    0.00031
+    1411   0.769   -66.40909    0.00031
+    1412   0.775   -66.40909    0.00030
+    1413   0.775   -66.40908    0.00030
+    1414   0.764   -66.40910    0.00031
+    1415   0.784   -66.40907    0.00030
+    1416   0.784   -66.40907    0.00030
+    1417   0.784   -66.40907    0.00030
+    1418   0.784   -66.40907    0.00030
+    1419   0.784   -66.40907    0.00030
+    1420   0.785   -66.40907    0.00030
+    1421   0.785   -66.40907    0.00030    0.01926      28      65
+    1422   0.785   -66.40907    0.00030
+    1423   0.785   -66.40907    0.00030
+    1424   0.785   -66.40907    0.00030
+    1425   0.785   -66.40907    0.00030
+    1426   0.785   -66.40907    0.00030
+    1427   0.785   -66.40907    0.00030
+    1428   0.785   -66.40907    0.00030
+    1429   0.785   -66.40907    0.00030
+    1430   0.785   -66.40907    0.00030
+    1431   0.785   -66.40907    0.00030
+    1432   0.785   -66.40907    0.00030
+    1433   0.785   -66.40907    0.00030
+    1434   0.785   -66.40907    0.00030
+    1435   0.784   -66.40907    0.00030
+    1436   0.785   -66.40907    0.00030
+    1437   0.785   -66.40907    0.00030
+    1438   0.785   -66.40907    0.00030
+    1439   0.785   -66.40907    0.00030
+    1440   0.785   -66.40907    0.00030
+    1441   0.785   -66.40907    0.00030
+    1442   0.786   -66.40907    0.00030
+    1443   0.786   -66.40907    0.00030
+    1444   0.786   -66.40907    0.00030
+    1445   0.786   -66.40907    0.00030
+    1446   0.786   -66.40907    0.00030
+    1447   0.786   -66.40907    0.00030
+    1448   0.786   -66.40907    0.00030
+    1449   0.786   -66.40907    0.00030
+    1450   0.787   -66.40907    0.00030
+    1451   0.787   -66.40907    0.00030
+    1452   0.788   -66.40907    0.00030
+    1453   0.788   -66.40907    0.00030
+    1454   0.788   -66.40907    0.00030
+    1455   0.788   -66.40907    0.00030
+    1456   0.788   -66.40907    0.00030
+    1457   0.788   -66.40907    0.00030
+    1458   0.788   -66.40907    0.00030
+    1459   0.788   -66.40906    0.00030
+    1460   0.788   -66.40906    0.00030
+    1461   0.788   -66.40906    0.00030
+    1462   0.788   -66.40906    0.00030
+    1463   0.789   -66.40906    0.00030
+    1464   0.784   -66.40907    0.00030
+    1465   0.790   -66.40906    0.00030
+    1466   0.790   -66.40906    0.00030
+    1467   0.784   -66.40907    0.00030
+    1468   0.790   -66.40906    0.00030
+    1469   0.790   -66.40906    0.00030
+    1470   0.794   -66.40906    0.00029
+    1471   0.784   -66.40907    0.00030
+    1472   0.794   -66.40905    0.00029
+    1473   0.764   -66.40910    0.00031
+    1474   0.796   -66.40905    0.00029
+    1475   0.796   -66.40905    0.00029
+    1476   0.796   -66.40905    0.00029
+    1477   0.796   -66.40905    0.00029
+    1478   0.795   -66.40905    0.00029
+    1479   0.796   -66.40905    0.00029
+    1480   0.796   -66.40905    0.00029
+    1481   0.796   -66.40905    0.00029
+    1482   0.796   -66.40905    0.00029
+    1483   0.796   -66.40905    0.00029
+    1484   0.796   -66.40905    0.00029
+    1485   0.796   -66.40905    0.00029
+    1486   0.797   -66.40905    0.00029    0.01540      29      53
+    1487   0.796   -66.40905    0.00029
+    1488   0.797   -66.40905    0.00029
+    1489   0.797   -66.40905    0.00029
+    1490   0.797   -66.40905    0.00029
+    1491   0.797   -66.40905    0.00029
+    1492   0.797   -66.40905    0.00029
+    1493   0.797   -66.40905    0.00029
+    1494   0.797   -66.40905    0.00029
+    1495   0.797   -66.40905    0.00029
+    1496   0.796   -66.40905    0.00029
+    1497   0.797   -66.40905    0.00029
+    1498   0.797   -66.40905    0.00029
+    1499   0.797   -66.40905    0.00029
+    1500   0.797   -66.40905    0.00029
+    1501   0.797   -66.40905    0.00029
+    1502   0.797   -66.40905    0.00029
+    1503   0.797   -66.40905    0.00029
+    1504   0.797   -66.40905    0.00029
+    1505   0.797   -66.40905    0.00029
+    1506   0.797   -66.40905    0.00029
+    1507   0.797   -66.40905    0.00029
+    1508   0.798   -66.40905    0.00029
+    1509   0.798   -66.40905    0.00029
+    1510   0.798   -66.40905    0.00029
+    1511   0.798   -66.40905    0.00029
+    1512   0.796   -66.40905    0.00029
+    1513   0.798   -66.40905    0.00029
+    1514   0.798   -66.40905    0.00029
+    1515   0.798   -66.40905    0.00029
+    1516   0.798   -66.40905    0.00029
+    1517   0.798   -66.40905    0.00029
+    1518   0.798   -66.40905    0.00029
+    1519   0.799   -66.40905    0.00029
+    1520   0.799   -66.40905    0.00029
+    1521   0.799   -66.40905    0.00029
+    1522   0.801   -66.40904    0.00029
+    1523   0.801   -66.40904    0.00029
+    1524   0.804   -66.40904    0.00029
+    1525   0.796   -66.40905    0.00029
+    1526   0.796   -66.40905    0.00029
+    1527   0.804   -66.40904    0.00029
+    1528   0.806   -66.40904    0.00029
+    1529   0.796   -66.40905    0.00029
+    1530   0.796   -66.40905    0.00029
+    1531   0.796   -66.40905    0.00029
+    1532   0.796   -66.40905    0.00029
+    1533   0.796   -66.40905    0.00029
+    1534   0.810   -66.40903    0.00029
+    1535   0.817   -66.40902    0.00028
+    1536   0.818   -66.40902    0.00028
+    1537   0.820   -66.40901    0.00028
+    1538   0.821   -66.40901    0.00028
+    1539   0.830   -66.40900    0.00028    0.00715      30      26
+    1540   0.830   -66.40900    0.00028
+    1541   0.830   -66.40900    0.00028
+    1542   0.830   -66.40900    0.00028
+    1543   0.830   -66.40900    0.00028
+    1544   0.830   -66.40900    0.00028
+    1545   0.830   -66.40900    0.00028
+    1546   0.831   -66.40900    0.00028
+    1547   0.831   -66.40900    0.00028
+    1548   0.831   -66.40900    0.00028
+    1549   0.831   -66.40900    0.00028
+    1550   0.831   -66.40900    0.00028
+    1551   0.831   -66.40900    0.00028
+    1552   0.831   -66.40900    0.00028
+    1553   0.831   -66.40900    0.00028
+    1554   0.831   -66.40900    0.00028
+    1555   0.831   -66.40900    0.00028
+    1556   0.831   -66.40900    0.00028
+    1557   0.832   -66.40900    0.00028
+    1558   0.832   -66.40900    0.00028
+    1559   0.832   -66.40899    0.00028
+    1560   0.832   -66.40899    0.00027
+    1561   0.833   -66.40899    0.00027
+    1562   0.835   -66.40899    0.00027
+    1563   0.842   -66.40898    0.00027
+    1564   0.851   -66.40896    0.00027
+    1565   0.873   -66.40893    0.00026    0.00843      31      33
+    1566   0.873   -66.40893    0.00026
+    1567   0.873   -66.40893    0.00026
+    1568   0.873   -66.40893    0.00026
+    1569   0.874   -66.40893    0.00026
+    1570   0.874   -66.40893    0.00026
+    1571   0.874   -66.40893    0.00026
+    1572   0.874   -66.40893    0.00026
+    1573   0.874   -66.40893    0.00026
+    1574   0.874   -66.40893    0.00026
+    1575   0.874   -66.40893    0.00026
+    1576   0.874   -66.40893    0.00026
+    1577   0.874   -66.40893    0.00026
+    1578   0.874   -66.40893    0.00026
+    1579   0.874   -66.40893    0.00026
+    1580   0.874   -66.40893    0.00026
+    1581   0.874   -66.40893    0.00026
+    1582   0.874   -66.40893    0.00026
+    1583   0.874   -66.40893    0.00026
+    1584   0.874   -66.40893    0.00026
+    1585   0.874   -66.40893    0.00026
+    1586   0.874   -66.40893    0.00026
+    1587   0.874   -66.40893    0.00026
+    1588   0.875   -66.40893    0.00026
+    1589   0.875   -66.40893    0.00026
+    1590   0.875   -66.40893    0.00026
+    1591   0.876   -66.40892    0.00026
+    1592   0.886   -66.40891    0.00025
+    1593   0.886   -66.40891    0.00025
+    1594   0.886   -66.40891    0.00025
+    1595   0.886   -66.40891    0.00025
+    1596   0.886   -66.40891    0.00025
+    1597   0.886   -66.40891    0.00025
+    1598   0.886   -66.40891    0.00025    0.00025      32       1
+    1599   0.886   -66.40891    0.00025    0.01299      33      52
+    1600   0.886   -66.40891    0.00025
+    1601   0.886   -66.40891    0.00025
+    1602   0.887   -66.40891    0.00025
+    1603   0.887   -66.40891    0.00025
+    1604   0.887   -66.40891    0.00025
+    1605   0.887   -66.40891    0.00025
+    1606   0.887   -66.40891    0.00025
+    1607   0.887   -66.40891    0.00025
+    1608   0.887   -66.40891    0.00025
+    1609   0.887   -66.40891    0.00025
+    1610   0.887   -66.40891    0.00025
+    1611   0.887   -66.40891    0.00025
+    1612   0.887   -66.40891    0.00025
+    1613   0.887   -66.40891    0.00025
+    1614   0.887   -66.40891    0.00025
+    1615   0.887   -66.40891    0.00025
+    1616   0.887   -66.40891    0.00025
+    1617   0.887   -66.40891    0.00025
+    1618   0.887   -66.40891    0.00025
+    1619   0.887   -66.40891    0.00025
+    1620   0.887   -66.40891    0.00025
+    1621   0.887   -66.40891    0.00025
+    1622   0.887   -66.40891    0.00025
+    1623   0.887   -66.40891    0.00025
+    1624   0.887   -66.40891    0.00025
+    1625   0.888   -66.40891    0.00025
+    1626   0.888   -66.40891    0.00025
+    1627   0.888   -66.40891    0.00025
+    1628   0.888   -66.40891    0.00025
+    1629   0.888   -66.40891    0.00025
+    1630   0.888   -66.40890    0.00025
+    1631   0.889   -66.40890    0.00025
+    1632   0.889   -66.40890    0.00025
+    1633   0.889   -66.40890    0.00025
+    1634   0.893   -66.40890    0.00025
+    1635   0.895   -66.40890    0.00025
+    1636   0.895   -66.40889    0.00025
+    1637   0.895   -66.40889    0.00025
+    1638   0.896   -66.40889    0.00025
+    1639   0.896   -66.40889    0.00025
+    1640   0.885   -66.40891    0.00025
+    1641   0.886   -66.40891    0.00025
+    1642   0.886   -66.40891    0.00025
+    1643   0.886   -66.40891    0.00025
+    1644   0.886   -66.40891    0.00025
+    1645   0.886   -66.40891    0.00025
+    1646   0.900   -66.40889    0.00025
+    1647   0.900   -66.40889    0.00025
+    1648   0.900   -66.40889    0.00025
+    1649   0.900   -66.40889    0.00025
+    1650   0.900   -66.40889    0.00025
+    1651   0.900   -66.40889    0.00025    0.01270      34      52
+    1652   0.900   -66.40889    0.00025
+    1653   0.900   -66.40889    0.00025
+    1654   0.900   -66.40889    0.00025
+    1655   0.900   -66.40889    0.00025
+    1656   0.900   -66.40889    0.00025
+    1657   0.900   -66.40889    0.00025
+    1658   0.900   -66.40889    0.00025
+    1659   0.900   -66.40889    0.00025
+    1660   0.900   -66.40889    0.00025
+    1661   0.900   -66.40889    0.00025
+    1662   0.900   -66.40889    0.00025
+    1663   0.900   -66.40889    0.00025
+    1664   0.900   -66.40889    0.00025
+    1665   0.900   -66.40889    0.00025
+    1666   0.900   -66.40889    0.00025
+    1667   0.900   -66.40889    0.00025
+    1668   0.900   -66.40889    0.00025
+    1669   0.900   -66.40889    0.00025
+    1670   0.900   -66.40889    0.00025
+    1671   0.900   -66.40889    0.00025
+    1672   0.900   -66.40889    0.00025
+    1673   0.900   -66.40889    0.00025
+    1674   0.901   -66.40889    0.00025
+    1675   0.901   -66.40889    0.00025
+    1676   0.901   -66.40889    0.00025
+    1677   0.901   -66.40889    0.00025
+    1678   0.901   -66.40889    0.00025
+    1679   0.901   -66.40889    0.00025
+    1680   0.901   -66.40889    0.00025
+    1681   0.901   -66.40889    0.00024
+    1682   0.901   -66.40888    0.00024
+    1683   0.901   -66.40888    0.00024
+    1684   0.901   -66.40888    0.00024
+    1685   0.901   -66.40888    0.00024
+    1686   0.902   -66.40888    0.00024
+    1687   0.906   -66.40888    0.00024
+    1688   0.907   -66.40888    0.00024
+    1689   0.907   -66.40888    0.00024
+    1690   0.908   -66.40887    0.00024
+    1691   0.908   -66.40887    0.00024
+    1692   0.919   -66.40886    0.00024
+    1693   0.899   -66.40889    0.00025
+    1694   0.920   -66.40886    0.00024
+    1695   0.899   -66.40889    0.00025
+    1696   0.899   -66.40889    0.00025
+    1697   0.900   -66.40889    0.00025
+    1698   0.900   -66.40889    0.00025
+    1699   0.922   -66.40885    0.00024
+    1700   0.908   -66.40887    0.00024
+    1701   0.908   -66.40887    0.00024
+    1702   0.909   -66.40887    0.00024
+    1703   0.914   -66.40886    0.00024    0.00072      35       3
+    1704   0.917   -66.40886    0.00024
+    1705   0.917   -66.40886    0.00024
+    1706   1.006   -66.40872    0.00021    0.00061      36       3
+    1707   1.008   -66.40871    0.00020
+    1708   1.008   -66.40871    0.00020
+    1709   1.026   -66.40869    0.00020    0.00673      37      34
+    1710   1.026   -66.40868    0.00020
+    1711   1.026   -66.40868    0.00020
+    1712   1.026   -66.40868    0.00020
+    1713   1.027   -66.40868    0.00020
+    1714   1.027   -66.40868    0.00020
+    1715   1.027   -66.40868    0.00020
+    1716   1.027   -66.40868    0.00020
+    1717   1.027   -66.40868    0.00020
+    1718   1.027   -66.40868    0.00020
+    1719   1.027   -66.40868    0.00020
+    1720   1.027   -66.40868    0.00020
+    1721   1.027   -66.40868    0.00020
+    1722   1.027   -66.40868    0.00020
+    1723   1.027   -66.40868    0.00020
+    1724   1.027   -66.40868    0.00020
+    1725   1.027   -66.40868    0.00020
+    1726   1.027   -66.40868    0.00020
+    1727   1.027   -66.40868    0.00020
+    1728   1.027   -66.40868    0.00020
+    1729   1.027   -66.40868    0.00020
+    1730   1.027   -66.40868    0.00020
+    1731   1.028   -66.40868    0.00020
+    1732   1.028   -66.40868    0.00020
+    1733   1.028   -66.40868    0.00020
+    1734   1.028   -66.40868    0.00020
+    1735   1.028   -66.40868    0.00020
+    1736   1.028   -66.40868    0.00020
+    1737   1.028   -66.40868    0.00020
+    1738   1.029   -66.40868    0.00020
+    1739   1.029   -66.40868    0.00020
+    1740   1.029   -66.40868    0.00020
+    1741   1.029   -66.40868    0.00020
+    1742   1.029   -66.40868    0.00020
+    1743   1.035   -66.40867    0.00020    0.00683      38      35
+    1744   1.035   -66.40867    0.00020
+    1745   1.035   -66.40867    0.00020
+    1746   1.035   -66.40867    0.00020
+    1747   1.035   -66.40867    0.00020
+    1748   1.035   -66.40867    0.00020
+    1749   1.035   -66.40867    0.00020
+    1750   1.035   -66.40867    0.00020
+    1751   1.035   -66.40867    0.00020
+    1752   1.035   -66.40867    0.00020
+    1753   1.035   -66.40867    0.00020
+    1754   1.035   -66.40867    0.00020
+    1755   1.035   -66.40867    0.00020
+    1756   1.035   -66.40867    0.00020
+    1757   1.035   -66.40867    0.00020
+    1758   1.035   -66.40867    0.00020
+    1759   1.035   -66.40867    0.00020
+    1760   1.035   -66.40867    0.00020
+    1761   1.035   -66.40867    0.00020
+    1762   1.035   -66.40867    0.00020
+    1763   1.036   -66.40867    0.00020
+    1764   1.036   -66.40867    0.00020
+    1765   1.036   -66.40867    0.00020
+    1766   1.036   -66.40867    0.00020
+    1767   1.036   -66.40867    0.00020
+    1768   1.036   -66.40867    0.00020
+    1769   1.036   -66.40867    0.00020
+    1770   1.036   -66.40867    0.00020
+    1771   1.036   -66.40867    0.00020
+    1772   1.037   -66.40867    0.00019
+    1773   1.036   -66.40867    0.00019
+    1774   1.037   -66.40867    0.00019
+    1775   1.037   -66.40867    0.00019
+    1776   1.037   -66.40867    0.00019
+    1777   1.037   -66.40867    0.00019
+    1778   1.036   -66.40867    0.00019    0.00388      39      20
+    1779   1.037   -66.40867    0.00019
+    1780   1.037   -66.40867    0.00019
+    1781   1.037   -66.40867    0.00019
+    1782   1.037   -66.40867    0.00019
+    1783   1.038   -66.40867    0.00019
+    1784   1.036   -66.40867    0.00019
+    1785   1.038   -66.40867    0.00019
+    1786   1.038   -66.40867    0.00019
+    1787   1.038   -66.40867    0.00019
+    1788   1.038   -66.40867    0.00019
+    1789   1.039   -66.40867    0.00019
+    1790   1.039   -66.40866    0.00019
+    1791   1.040   -66.40866    0.00019
+    1792   1.041   -66.40866    0.00019
+    1793   1.055   -66.40864    0.00019
+    1794   1.056   -66.40864    0.00019
+    1795   1.036   -66.40867    0.00019
+    1796   1.037   -66.40867    0.00019
+    1797   1.037   -66.40867    0.00019
+    1798   1.068   -66.40862    0.00018    0.00718      40      39
+    1799   1.068   -66.40862    0.00018
+    1800   1.068   -66.40862    0.00018
+    1801   1.068   -66.40862    0.00018
+    1802   1.068   -66.40862    0.00018
+    1803   1.068   -66.40862    0.00018
+    1804   1.068   -66.40862    0.00018
+    1805   1.068   -66.40862    0.00018
+    1806   1.068   -66.40862    0.00018
+    1807   1.068   -66.40862    0.00018
+    1808   1.068   -66.40862    0.00018
+    1809   1.068   -66.40862    0.00018
+    1810   1.068   -66.40862    0.00018
+    1811   1.068   -66.40862    0.00018
+    1812   1.068   -66.40862    0.00018
+    1813   1.068   -66.40862    0.00018
+    1814   1.068   -66.40862    0.00018
+    1815   1.068   -66.40862    0.00018
+    1816   1.068   -66.40862    0.00018
+    1817   1.068   -66.40862    0.00018
+    1818   1.068   -66.40862    0.00018
+    1819   1.068   -66.40862    0.00018
+    1820   1.069   -66.40862    0.00018
+    1821   1.069   -66.40862    0.00018
+    1822   1.069   -66.40862    0.00018
+    1823   1.069   -66.40862    0.00018
+    1824   1.069   -66.40862    0.00018
+    1825   1.069   -66.40862    0.00018
+    1826   1.069   -66.40862    0.00018
+    1827   1.069   -66.40862    0.00018
+    1828   1.070   -66.40862    0.00018
+    1829   1.070   -66.40861    0.00018
+    1830   1.070   -66.40861    0.00018
+    1831   1.071   -66.40861    0.00018
+    1832   1.072   -66.40861    0.00018
+    1833   1.081   -66.40860    0.00018
+    1834   1.086   -66.40859    0.00018
+    1835   1.087   -66.40859    0.00018
+    1836   1.087   -66.40859    0.00018
+    1837   1.087   -66.40859    0.00018    0.00641      41      36
+    1838   1.087   -66.40859    0.00018
+    1839   1.087   -66.40859    0.00018
+    1840   1.087   -66.40859    0.00018
+    1841   1.087   -66.40859    0.00018
+    1842   1.087   -66.40859    0.00018
+    1843   1.087   -66.40859    0.00018
+    1844   1.087   -66.40859    0.00018
+    1845   1.087   -66.40859    0.00018
+    1846   1.087   -66.40859    0.00018
+    1847   1.087   -66.40859    0.00018
+    1848   1.087   -66.40859    0.00018
+    1849   1.087   -66.40859    0.00018
+    1850   1.087   -66.40859    0.00018
+    1851   1.087   -66.40859    0.00018
+    1852   1.087   -66.40859    0.00018
+    1853   1.087   -66.40859    0.00018
+    1854   1.088   -66.40859    0.00018
+    1855   1.088   -66.40859    0.00018
+    1856   1.088   -66.40859    0.00018
+    1857   1.088   -66.40859    0.00018
+    1858   1.088   -66.40859    0.00018
+    1859   1.088   -66.40859    0.00018
+    1860   1.088   -66.40859    0.00018
+    1861   1.088   -66.40859    0.00018
+    1862   1.088   -66.40859    0.00018
+    1863   1.088   -66.40859    0.00018
+    1864   1.089   -66.40859    0.00018
+    1865   1.089   -66.40859    0.00018
+    1866   1.087   -66.40859    0.00018
+    1867   1.093   -66.40858    0.00018
+    1868   1.105   -66.40856    0.00017
+    1869   1.108   -66.40856    0.00017
+    1870   1.108   -66.40855    0.00017
+    1871   1.110   -66.40855    0.00017
+    1872   1.110   -66.40855    0.00017
+    1873   1.111   -66.40855    0.00017    0.00582      42      34
+    1874   1.111   -66.40855    0.00017
+    1875   1.111   -66.40855    0.00017
+    1876   1.111   -66.40855    0.00017
+    1877   1.111   -66.40855    0.00017
+    1878   1.112   -66.40855    0.00017
+    1879   1.112   -66.40855    0.00017
+    1880   1.112   -66.40855    0.00017
+    1881   1.112   -66.40855    0.00017
+    1882   1.112   -66.40855    0.00017
+    1883   1.112   -66.40855    0.00017
+    1884   1.112   -66.40855    0.00017
+    1885   1.112   -66.40855    0.00017
+    1886   1.112   -66.40855    0.00017
+    1887   1.112   -66.40855    0.00017
+    1888   1.112   -66.40855    0.00017
+    1889   1.112   -66.40855    0.00017
+    1890   1.112   -66.40855    0.00017
+    1891   1.112   -66.40855    0.00017
+    1892   1.112   -66.40855    0.00017
+    1893   1.112   -66.40855    0.00017
+    1894   1.112   -66.40855    0.00017
+    1895   1.112   -66.40855    0.00017
+    1896   1.112   -66.40855    0.00017
+    1897   1.112   -66.40855    0.00017
+    1898   1.113   -66.40855    0.00017
+    1899   1.113   -66.40855    0.00017
+    1900   1.113   -66.40855    0.00017
+    1901   1.113   -66.40855    0.00017
+    1902   1.116   -66.40854    0.00017
+    1903   1.120   -66.40854    0.00017
+    1904   1.122   -66.40853    0.00017
+    1905   1.133   -66.40852    0.00017
+    1906   1.134   -66.40851    0.00017
+    1907   1.160   -66.40847    0.00016    0.00536      43      34
+    1908   1.160   -66.40847    0.00016
+    1909   1.161   -66.40847    0.00016
+    1910   1.161   -66.40847    0.00016
+    1911   1.161   -66.40847    0.00016
+    1912   1.161   -66.40847    0.00016
+    1913   1.161   -66.40847    0.00016
+    1914   1.161   -66.40847    0.00016
+    1915   1.161   -66.40847    0.00016
+    1916   1.161   -66.40847    0.00016
+    1917   1.161   -66.40847    0.00016
+    1918   1.161   -66.40847    0.00016
+    1919   1.161   -66.40847    0.00016
+    1920   1.161   -66.40847    0.00016
+    1921   1.161   -66.40847    0.00016
+    1922   1.161   -66.40847    0.00016
+    1923   1.161   -66.40847    0.00016
+    1924   1.161   -66.40847    0.00016
+    1925   1.161   -66.40847    0.00016
+    1926   1.161   -66.40847    0.00016
+    1927   1.161   -66.40847    0.00016
+    1928   1.161   -66.40847    0.00016
+    1929   1.162   -66.40847    0.00016
+    1930   1.162   -66.40847    0.00016
+    1931   1.162   -66.40847    0.00016
+    1932   1.162   -66.40847    0.00016
+    1933   1.162   -66.40847    0.00016
+    1934   1.162   -66.40847    0.00016
+    1935   1.162   -66.40847    0.00016
+    1936   1.162   -66.40847    0.00016
+    1937   1.163   -66.40847    0.00016
+    1938   1.175   -66.40845    0.00015
+    1939   1.175   -66.40845    0.00015
+    1940   1.175   -66.40845    0.00015
+    1941   1.175   -66.40845    0.00015    0.00446      44      29
+    1942   1.175   -66.40845    0.00015
+    1943   1.175   -66.40845    0.00015
+    1944   1.175   -66.40845    0.00015
+    1945   1.175   -66.40845    0.00015
+    1946   1.175   -66.40845    0.00015
+    1947   1.175   -66.40845    0.00015
+    1948   1.175   -66.40845    0.00015
+    1949   1.175   -66.40845    0.00015
+    1950   1.175   -66.40845    0.00015
+    1951   1.175   -66.40845    0.00015
+    1952   1.175   -66.40845    0.00015
+    1953   1.176   -66.40845    0.00015
+    1954   1.176   -66.40845    0.00015
+    1955   1.176   -66.40845    0.00015
+    1956   1.176   -66.40845    0.00015
+    1957   1.177   -66.40845    0.00015
+    1958   1.177   -66.40845    0.00015
+    1959   1.177   -66.40845    0.00015
+    1960   1.178   -66.40844    0.00015
+    1961   1.179   -66.40844    0.00015
+    1962   1.179   -66.40844    0.00015
+    1963   1.183   -66.40844    0.00015
+    1964   1.183   -66.40844    0.00015
+    1965   1.184   -66.40843    0.00015
+    1966   1.175   -66.40845    0.00015
+    1967   1.184   -66.40843    0.00015
+    1968   1.175   -66.40845    0.00015
+    1969   1.185   -66.40843    0.00015
+    1970   1.175   -66.40845    0.00015    0.00122      45       8
+    1971   1.185   -66.40843    0.00015
+    1972   1.185   -66.40843    0.00015
+    1973   1.180   -66.40844    0.00015
+    1974   1.185   -66.40843    0.00015
+    1975   1.185   -66.40843    0.00015
+    1976   1.185   -66.40843    0.00015
+    1977   1.185   -66.40843    0.00015
+    1978   1.185   -66.40843    0.00015    0.00845      46      56
+    1979   1.185   -66.40843    0.00015
+    1980   1.185   -66.40843    0.00015
+    1981   1.185   -66.40843    0.00015
+    1982   1.185   -66.40843    0.00015
+    1983   1.185   -66.40843    0.00015
+    1984   1.185   -66.40843    0.00015
+    1985   1.185   -66.40843    0.00015
+    1986   1.185   -66.40843    0.00015
+    1987   1.185   -66.40843    0.00015
+    1988   1.185   -66.40843    0.00015
+    1989   1.185   -66.40843    0.00015
+    1990   1.185   -66.40843    0.00015
+    1991   1.185   -66.40843    0.00015
+    1992   1.185   -66.40843    0.00015
+    1993   1.185   -66.40843    0.00015
+    1994   1.185   -66.40843    0.00015
+    1995   1.185   -66.40843    0.00015
+    1996   1.185   -66.40843    0.00015
+    1997   1.185   -66.40843    0.00015
+    1998   1.185   -66.40843    0.00015
+    1999   1.185   -66.40843    0.00015
+    2000   1.185   -66.40843    0.00015
+    2001   1.185   -66.40843    0.00015
+    2002   1.185   -66.40843    0.00015
+    2003   1.185   -66.40843    0.00015
+    2004   1.185   -66.40843    0.00015
+    2005   1.185   -66.40843    0.00015
+    2006   1.185   -66.40843    0.00015
+    2007   1.185   -66.40843    0.00015
+    2008   1.185   -66.40843    0.00015
+    2009   1.186   -66.40843    0.00015
+    2010   1.186   -66.40843    0.00015
+    2011   1.186   -66.40843    0.00015
+    2012   1.186   -66.40843    0.00015
+    2013   1.186   -66.40843    0.00015
+    2014   1.186   -66.40843    0.00015
+    2015   1.186   -66.40843    0.00015
+    2016   1.186   -66.40843    0.00015
+    2017   1.186   -66.40843    0.00015
+    2018   1.186   -66.40843    0.00015
+    2019   1.186   -66.40843    0.00015
+    2020   1.187   -66.40843    0.00015
+    2021   1.187   -66.40843    0.00015
+    2022   1.193   -66.40842    0.00015
+    2023   1.195   -66.40842    0.00015
+    2024   1.196   -66.40841    0.00015
+    2025   1.202   -66.40841    0.00015
+    2026   1.180   -66.40844    0.00015
+    2027   1.181   -66.40844    0.00015
+    2028   1.181   -66.40844    0.00015
+    2029   1.205   -66.40840    0.00015
+    2030   1.207   -66.40840    0.00015
+    2031   1.208   -66.40840    0.00015
+    2032   1.211   -66.40839    0.00015
+    2033   1.211   -66.40839    0.00015
+    2034   1.211   -66.40839    0.00015    0.00954      47      66
+    2035   1.211   -66.40839    0.00015
+    2036   1.211   -66.40839    0.00015
+    2037   1.211   -66.40839    0.00015
+    2038   1.211   -66.40839    0.00015
+    2039   1.211   -66.40839    0.00015
+    2040   1.211   -66.40839    0.00015
+    2041   1.211   -66.40839    0.00015
+    2042   1.211   -66.40839    0.00015
+    2043   1.211   -66.40839    0.00015
+    2044   1.211   -66.40839    0.00015
+    2045   1.211   -66.40839    0.00015
+    2046   1.211   -66.40839    0.00015
+    2047   1.211   -66.40839    0.00015
+    2048   1.211   -66.40839    0.00015
+    2049   1.211   -66.40839    0.00015
+    2050   1.211   -66.40839    0.00015
+    2051   1.211   -66.40839    0.00015
+    2052   1.211   -66.40839    0.00015
+    2053   1.211   -66.40839    0.00015
+    2054   1.211   -66.40839    0.00015
+    2055   1.211   -66.40839    0.00015
+    2056   1.211   -66.40839    0.00015
+    2057   1.211   -66.40839    0.00015
+    2058   1.211   -66.40839    0.00015
+    2059   1.211   -66.40839    0.00015
+    2060   1.211   -66.40839    0.00015
+    2061   1.211   -66.40839    0.00015
+    2062   1.211   -66.40839    0.00015
+    2063   1.211   -66.40839    0.00015
+    2064   1.211   -66.40839    0.00015
+    2065   1.211   -66.40839    0.00015
+    2066   1.211   -66.40839    0.00015
+    2067   1.212   -66.40839    0.00015
+    2068   1.212   -66.40839    0.00015
+    2069   1.212   -66.40839    0.00015
+    2070   1.212   -66.40839    0.00015
+    2071   1.212   -66.40839    0.00015
+    2072   1.212   -66.40839    0.00015
+    2073   1.212   -66.40839    0.00014
+    2074   1.212   -66.40839    0.00014
+    2075   1.212   -66.40839    0.00014
+    2076   1.212   -66.40839    0.00014
+    2077   1.212   -66.40839    0.00014
+    2078   1.212   -66.40839    0.00014
+    2079   1.212   -66.40839    0.00014
+    2080   1.212   -66.40839    0.00014
+    2081   1.212   -66.40839    0.00014
+    2082   1.213   -66.40839    0.00014
+    2083   1.213   -66.40839    0.00014
+    2084   1.213   -66.40839    0.00014
+    2085   1.213   -66.40839    0.00014
+    2086   1.213   -66.40839    0.00014
+    2087   1.213   -66.40839    0.00014
+    2088   1.216   -66.40838    0.00014
+    2089   1.185   -66.40843    0.00015
+    2090   1.223   -66.40837    0.00014
+    2091   1.232   -66.40836    0.00014
+    2092   1.233   -66.40836    0.00014
+    2093   1.224   -66.40837    0.00014
+    2094   1.233   -66.40836    0.00014
+    2095   1.234   -66.40835    0.00014
+    2096   1.234   -66.40835    0.00014
+    2097   1.224   -66.40837    0.00014
+    2098   1.225   -66.40837    0.00014
+    2099   1.225   -66.40837    0.00014
+    2100   1.226   -66.40837    0.00014    0.00028      48       2
+    2101   1.234   -66.40835    0.00014
+    2102   1.226   -66.40837    0.00014    0.00056      49       4
+    2103   1.230   -66.40836    0.00014
+    2104   1.231   -66.40836    0.00014
+    2105   1.231   -66.40836    0.00014
+    2106   1.236   -66.40835    0.00014    0.00499      50      36
+    2107   1.236   -66.40835    0.00014
+    2108   1.236   -66.40835    0.00014
+    2109   1.236   -66.40835    0.00014
+    2110   1.236   -66.40835    0.00014
+    2111   1.236   -66.40835    0.00014
+    2112   1.236   -66.40835    0.00014
+    2113   1.236   -66.40835    0.00014
+    2114   1.236   -66.40835    0.00014
+    2115   1.236   -66.40835    0.00014
+    2116   1.236   -66.40835    0.00014
+    2117   1.236   -66.40835    0.00014
+    2118   1.236   -66.40835    0.00014
+    2119   1.236   -66.40835    0.00014
+    2120   1.236   -66.40835    0.00014
+    2121   1.236   -66.40835    0.00014
+    2122   1.236   -66.40835    0.00014
+    2123   1.236   -66.40835    0.00014
+    2124   1.236   -66.40835    0.00014
+    2125   1.236   -66.40835    0.00014
+    2126   1.236   -66.40835    0.00014
+    2127   1.237   -66.40835    0.00014
+    2128   1.237   -66.40835    0.00014
+    2129   1.237   -66.40835    0.00014
+    2130   1.237   -66.40835    0.00014
+    2131   1.237   -66.40835    0.00014
+    2132   1.237   -66.40835    0.00014
+    2133   1.237   -66.40835    0.00014
+    2134   1.237   -66.40835    0.00014
+    2135   1.237   -66.40835    0.00014
+    2136   1.237   -66.40835    0.00014
+    2137   1.238   -66.40835    0.00014
+    2138   1.239   -66.40835    0.00014
+    2139   1.258   -66.40832    0.00013
+    2140   1.260   -66.40831    0.00013
+    2141   1.252   -66.40833    0.00014
+    2142   1.253   -66.40832    0.00014    0.00027      51       2
+    2143   1.258   -66.40832    0.00013
+    2144   1.323   -66.40821    0.00012    0.00072      52       6
+    2145   1.324   -66.40821    0.00012
+    2146   1.324   -66.40821    0.00012
+    2147   1.324   -66.40821    0.00012
+    2148   1.327   -66.40821    0.00012
+    2149   1.328   -66.40820    0.00012
+    2150   1.328   -66.40820    0.00012    0.00024      53       2
+    2151   1.330   -66.40820    0.00012
+    2152   1.341   -66.40818    0.00012    0.00081      54       7
+    2153   1.342   -66.40818    0.00012
+    2154   1.347   -66.40817    0.00012
+    2155   1.347   -66.40817    0.00012
+    2156   1.347   -66.40817    0.00012
+    2157   1.347   -66.40817    0.00012
+    2158   1.348   -66.40817    0.00012
+    2159   1.411   -66.40807    0.00010    0.00021      55       2
+    2160   1.415   -66.40807    0.00010
+    2161   1.438   -66.40803    0.00010    0.00010      56       1
+    2162   1.470   -66.40798    0.00009    0.00047      57       5
+    2163   1.471   -66.40798    0.00009
+    2164   1.471   -66.40798    0.00009
+    2165   1.471   -66.40798    0.00009
+    2166   1.471   -66.40798    0.00009
+    2167   1.505   -66.40792    0.00009    0.00053      58       6
+    2168   1.505   -66.40792    0.00009
+    2169   1.505   -66.40792    0.00009
+    2170   1.505   -66.40792    0.00009
+    2171   1.506   -66.40792    0.00009
+    2172   1.506   -66.40792    0.00009
+    2173   1.543   -66.40786    0.00008    0.00008      59       1
+    2174   1.569   -66.40782    0.00008    0.00008      60       1
+    2175   1.573   -66.40781    0.00008    0.00039      61       5
+    2176   1.576   -66.40781    0.00008
+    2177   1.599   -66.40777    0.00008
+    2178   1.574   -66.40781    0.00008
+    2179   1.575   -66.40781    0.00008
+    2180   1.576   -66.40781    0.00008    0.00039      62       5
+    2181   1.576   -66.40781    0.00008
+    2182   1.591   -66.40779    0.00008
+    2183   1.595   -66.40778    0.00008
+    2184   1.596   -66.40778    0.00008
+    2185   1.598   -66.40777    0.00008    0.00008      63       1
+    2186   1.606   -66.40776    0.00007    0.00060      64       8
+    2187   1.606   -66.40776    0.00007
+    2188   1.607   -66.40776    0.00007
+    2189   1.607   -66.40776    0.00007
+    2190   1.607   -66.40776    0.00007
+    2191   1.607   -66.40776    0.00007
+    2192   1.607   -66.40776    0.00007
+    2193   1.608   -66.40776    0.00007
+    2194   1.658   -66.40768    0.00007    0.00007      65       1
+    2195   1.684   -66.40764    0.00007    0.00032      66       5
+    2196   1.689   -66.40763    0.00006
+    2197   1.689   -66.40763    0.00006
+    2198   1.706   -66.40760    0.00006
+    2199   1.707   -66.40760    0.00006
+    2200   1.805   -66.40744    0.00005    0.00016      67       3
+    2201   1.806   -66.40744    0.00005
+    2202   1.806   -66.40744    0.00005
+    2203   1.828   -66.40741    0.00005    0.00005      68       1
+    2204   1.842   -66.40739    0.00005    0.00015      69       3
+    2205   1.842   -66.40739    0.00005
+    2206   1.844   -66.40738    0.00005
+    2207   2.110   -66.40696    0.00003    0.00013      70       4
+    2208   2.113   -66.40695    0.00003
+    2209   2.111   -66.40696    0.00003
+    2210   2.115   -66.40695    0.00003
+    2211   2.119   -66.40694    0.00003    0.00009      71       3
+    2212   2.121   -66.40694    0.00003
+    2213   2.116   -66.40695    0.00003
+    2214   2.112   -66.40695    0.00003    0.00006      72       2
+    2215   2.112   -66.40695    0.00003
+    2216   2.191   -66.40683    0.00003    0.00025      73       9
+    2217   2.191   -66.40683    0.00003
+    2218   2.191   -66.40683    0.00003
+    2219   2.191   -66.40683    0.00003
+    2220   2.192   -66.40683    0.00003
+    2221   2.192   -66.40683    0.00003
+    2222   2.192   -66.40683    0.00003
+    2223   2.193   -66.40683    0.00003
+    2224   2.193   -66.40683    0.00003
+    2225   2.221   -66.40678    0.00003    0.00071      74      27
+    2226   2.221   -66.40678    0.00003
+    2227   2.221   -66.40678    0.00003
+    2228   2.221   -66.40678    0.00003
+    2229   2.221   -66.40678    0.00003
+    2230   2.221   -66.40678    0.00003
+    2231   2.221   -66.40678    0.00003
+    2232   2.221   -66.40678    0.00003
+    2233   2.222   -66.40678    0.00003
+    2234   2.222   -66.40678    0.00003
+    2235   2.222   -66.40678    0.00003
+    2236   2.222   -66.40678    0.00003
+    2237   2.222   -66.40678    0.00003
+    2238   2.222   -66.40678    0.00003
+    2239   2.222   -66.40678    0.00003
+    2240   2.222   -66.40678    0.00003
+    2241   2.222   -66.40678    0.00003
+    2242   2.222   -66.40678    0.00003
+    2243   2.223   -66.40678    0.00003
+    2244   2.223   -66.40678    0.00003
+    2245   2.223   -66.40678    0.00003
+    2246   2.240   -66.40675    0.00003
+    2247   2.241   -66.40675    0.00003
+    2248   2.243   -66.40675    0.00003
+    2249   2.243   -66.40675    0.00003
+    2250   2.244   -66.40674    0.00003
+    2251   2.245   -66.40674    0.00003
+    2252   2.259   -66.40672    0.00002    0.00015      75       6
+    2253   2.264   -66.40671    0.00002
+    2254   2.290   -66.40667    0.00002
+    2255   2.265   -66.40671    0.00002
+    2256   2.270   -66.40670    0.00002
+    2257   2.271   -66.40670    0.00002
+    2258   2.290   -66.40667    0.00002    0.00002      76       1
+    2259   2.296   -66.40666    0.00002    0.00005      77       2
+    2260   2.303   -66.40665    0.00002
+    2261   2.326   -66.40661    0.00002    0.00002      78       1
+    2262   2.326   -66.40661    0.00002    0.00053      79      24
+    2263   2.326   -66.40661    0.00002
+    2264   2.326   -66.40661    0.00002
+    2265   2.326   -66.40661    0.00002
+    2266   2.326   -66.40661    0.00002
+    2267   2.326   -66.40661    0.00002
+    2268   2.326   -66.40661    0.00002
+    2269   2.327   -66.40661    0.00002
+    2270   2.327   -66.40661    0.00002
+    2271   2.327   -66.40661    0.00002
+    2272   2.327   -66.40661    0.00002
+    2273   2.327   -66.40661    0.00002
+    2274   2.327   -66.40661    0.00002
+    2275   2.327   -66.40661    0.00002
+    2276   2.327   -66.40661    0.00002
+    2277   2.327   -66.40661    0.00002
+    2278   2.327   -66.40661    0.00002
+    2279   2.327   -66.40661    0.00002
+    2280   2.327   -66.40661    0.00002
+    2281   2.327   -66.40661    0.00002
+    2282   2.327   -66.40661    0.00002
+    2283   2.339   -66.40659    0.00002
+    2284   2.346   -66.40658    0.00002
+    2285   2.347   -66.40658    0.00002
+    2286   2.363   -66.40655    0.00002    0.00054      80      26
+    2287   2.363   -66.40655    0.00002
+    2288   2.363   -66.40655    0.00002
+    2289   2.363   -66.40655    0.00002
+    2290   2.364   -66.40655    0.00002
+    2291   2.364   -66.40655    0.00002
+    2292   2.364   -66.40655    0.00002
+    2293   2.364   -66.40655    0.00002
+    2294   2.364   -66.40655    0.00002
+    2295   2.364   -66.40655    0.00002
+    2296   2.364   -66.40655    0.00002
+    2297   2.364   -66.40655    0.00002
+    2298   2.364   -66.40655    0.00002
+    2299   2.365   -66.40655    0.00002
+    2300   2.365   -66.40655    0.00002
+    2301   2.365   -66.40655    0.00002
+    2302   2.365   -66.40655    0.00002
+    2303   2.365   -66.40655    0.00002
+    2304   2.365   -66.40655    0.00002
+    2305   2.365   -66.40655    0.00002
+    2306   2.365   -66.40655    0.00002
+    2307   2.366   -66.40655    0.00002
+    2308   2.366   -66.40655    0.00002
+    2309   2.367   -66.40655    0.00002
+    2310   2.369   -66.40655    0.00002
+    2311   2.386   -66.40652    0.00002
+    2312   2.397   -66.40650    0.00002    0.00041      81      21
+    2313   2.397   -66.40650    0.00002
+    2314   2.398   -66.40650    0.00002
+    2315   2.398   -66.40650    0.00002
+    2316   2.398   -66.40650    0.00002
+    2317   2.398   -66.40650    0.00002
+    2318   2.398   -66.40650    0.00002
+    2319   2.398   -66.40650    0.00002
+    2320   2.398   -66.40650    0.00002
+    2321   2.398   -66.40650    0.00002
+    2322   2.398   -66.40650    0.00002
+    2323   2.398   -66.40650    0.00002
+    2324   2.398   -66.40650    0.00002
+    2325   2.398   -66.40650    0.00002
+    2326   2.398   -66.40650    0.00002
+    2327   2.398   -66.40650    0.00002
+    2328   2.399   -66.40650    0.00002
+    2329   2.399   -66.40650    0.00002
+    2330   2.399   -66.40650    0.00002
+    2331   2.400   -66.40650    0.00002
+    2332   2.400   -66.40650    0.00002
+    2333   2.400   -66.40650    0.00002    0.00029      82      15
+    2334   2.400   -66.40650    0.00002
+    2335   2.400   -66.40650    0.00002
+    2336   2.400   -66.40650    0.00002
+    2337   2.400   -66.40650    0.00002
+    2338   2.399   -66.40650    0.00002
+    2339   2.401   -66.40649    0.00002
+    2340   2.401   -66.40649    0.00002
+    2341   2.402   -66.40649    0.00002
+    2342   2.419   -66.40646    0.00002
+    2343   2.420   -66.40646    0.00002
+    2344   2.421   -66.40646    0.00002
+    2345   2.399   -66.40650    0.00002
+    2346   2.399   -66.40650    0.00002
+    2347   2.422   -66.40646    0.00002
+    2348   2.440   -66.40643    0.00002    0.00022      83      12
+    2349   2.440   -66.40643    0.00002
+    2350   2.440   -66.40643    0.00002
+    2351   2.440   -66.40643    0.00002
+    2352   2.441   -66.40643    0.00002
+    2353   2.441   -66.40643    0.00002
+    2354   2.441   -66.40643    0.00002
+    2355   2.441   -66.40643    0.00002
+    2356   2.442   -66.40643    0.00002
+    2357   2.443   -66.40643    0.00002
+    2358   2.446   -66.40642    0.00002
+    2359   2.447   -66.40642    0.00002
+    2360   2.447   -66.40642    0.00002    0.00050      84      28
+    2361   2.447   -66.40642    0.00002
+    2362   2.447   -66.40642    0.00002
+    2363   2.447   -66.40642    0.00002
+    2364   2.447   -66.40642    0.00002
+    2365   2.448   -66.40642    0.00002
+    2366   2.448   -66.40642    0.00002
+    2367   2.448   -66.40642    0.00002
+    2368   2.448   -66.40642    0.00002
+    2369   2.448   -66.40642    0.00002
+    2370   2.449   -66.40642    0.00002
+    2371   2.460   -66.40640    0.00002
+    2372   2.462   -66.40640    0.00002
+    2373   2.463   -66.40640    0.00002
+    2374   2.446   -66.40642    0.00002
+    2375   2.464   -66.40639    0.00002
+    2376   2.464   -66.40639    0.00002
+    2377   2.464   -66.40639    0.00002
+    2378   2.464   -66.40639    0.00002
+    2379   2.463   -66.40640    0.00002
+    2380   2.446   -66.40642    0.00002
+    2381   2.463   -66.40640    0.00002
+    2382   2.463   -66.40640    0.00002
+    2383   2.464   -66.40639    0.00002
+    2384   2.463   -66.40640    0.00002
+    2385   2.465   -66.40639    0.00002
+    2386   2.463   -66.40640    0.00002
+    2387   2.463   -66.40640    0.00002
+    2388   2.465   -66.40639    0.00002    0.00052      85      30
+    2389   2.463   -66.40639    0.00002
+    2390   2.465   -66.40639    0.00002
+    2391   2.463   -66.40639    0.00002
+    2392   2.465   -66.40639    0.00002
+    2393   2.467   -66.40639    0.00002
+    2394   2.467   -66.40639    0.00002
+    2395   2.483   -66.40636    0.00002
+    2396   2.483   -66.40636    0.00002
+    2397   2.483   -66.40636    0.00002
+    2398   2.483   -66.40636    0.00002
+    2399   2.483   -66.40636    0.00002
+    2400   2.483   -66.40636    0.00002
+    2401   2.483   -66.40636    0.00002
+    2402   2.483   -66.40636    0.00002
+    2403   2.483   -66.40636    0.00002
+    2404   2.483   -66.40636    0.00002
+    2405   2.483   -66.40636    0.00002
+    2406   2.483   -66.40636    0.00002
+    2407   2.484   -66.40636    0.00002
+    2408   2.465   -66.40639    0.00002
+    2409   2.464   -66.40639    0.00002
+    2410   2.484   -66.40636    0.00002
+    2411   2.484   -66.40636    0.00002
+    2412   2.484   -66.40636    0.00002
+    2413   2.464   -66.40639    0.00002
+    2414   2.484   -66.40636    0.00002
+    2415   2.484   -66.40636    0.00002
+    2416   2.484   -66.40636    0.00002
+    2417   2.464   -66.40639    0.00002
+    2418   2.485   -66.40636    0.00002    0.00045      86      26
+    2419   2.486   -66.40636    0.00002
+    2420   2.465   -66.40639    0.00002
+    2421   2.465   -66.40639    0.00002
+    2422   2.486   -66.40636    0.00002
+    2423   2.465   -66.40639    0.00002
+    2424   2.464   -66.40639    0.00002
+    2425   2.465   -66.40639    0.00002
+    2426   2.465   -66.40639    0.00002
+    2427   2.465   -66.40639    0.00002
+    2428   2.465   -66.40639    0.00002
+    2429   2.465   -66.40639    0.00002
+    2430   2.465   -66.40639    0.00002
+    2431   2.465   -66.40639    0.00002
+    2432   2.465   -66.40639    0.00002
+    2433   2.465   -66.40639    0.00002
+    2434   2.465   -66.40639    0.00002
+    2435   2.465   -66.40639    0.00002
+    2436   2.466   -66.40639    0.00002
+    2437   2.466   -66.40639    0.00002
+    2438   2.466   -66.40639    0.00002
+    2439   2.466   -66.40639    0.00002
+    2440   2.466   -66.40639    0.00002
+    2441   2.487   -66.40636    0.00002
+    2442   2.497   -66.40634    0.00002
+    2443   2.466   -66.40639    0.00002
+    2444   2.883   -66.40573    0.00001    0.00001      87       1
+    2445   3.005   -66.40553    0.00001    0.00001      88       1
+    2446   3.067   -66.40543    0.00001    0.00001      89       1
+    2447   3.090   -66.40540    0.00001    0.00001      90       2
+    2448   3.092   -66.40539    0.00001
+    2449   3.302   -66.40506    0.00000    0.00000      91       1
+    2450   3.518   -66.40471    0.00000    0.00000      92       1
+    2451   4.024   -66.40391    0.00000    0.00000      93       1
+T /K                                  :   298.15
+E lowest                              :   -66.41032
+ensemble average energy (kcal)        :    0.437
+ensemble entropy (J/mol K, cal/mol K) :   62.625   14.968
+ensemble free energy (kcal/mol)       :   -4.463
+population of lowest in %             :   10.044
+ number of unique conformers for further calc           93
+ list of relative energies saved as "crest.energies"
+
+ -----------------
+ Wall Time Summary
+ -----------------
+ CREST runtime (total)               0 d,  6 h,  6 min, 24.312 sec
+ ------------------------------------------------------------------
+ Trial metadynamics (MTD)   ...        0 min, 17.003 sec (  0.077%)
+ Metadynamics (MTD)         ...       66 min, 17.557 sec ( 18.093%)
+ Geometry optimization      ...      286 min, 22.181 sec ( 78.157%)
+ Molecular dynamics (MD)    ...        9 min, 36.129 sec (  2.621%)
+ Genetic crossing (GC)      ...        3 min, 42.544 sec (  1.012%)
+ I/O and setup              ...        0 min,  8.898 sec (  0.040%)
+ ------------------------------------------------------------------
+ * wall-time:     0 d,  6 h,  6 min, 24.312 sec
+ *  cpu-time:     0 d, 12 h, 11 min, 10.468 sec
+ * ratio c/w:     1.996 speedup
+ ------------------------------------------------------------------
+ * Total number of energy+grad calls: 563388
+
+ CREST terminated normally.

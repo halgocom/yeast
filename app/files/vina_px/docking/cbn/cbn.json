@@ -1,0 +1,1 @@
+{"testo": {"ligand": "/home/screener/files/vina_px/docking/testo_0.pdbqt", "target": "/home/screener/files/vina_px/docking/2am9_testo.pdbqt", "box": [[2.91, 4.51, -8.079], [16.088, 17.17, 20.397]], "replicate 0": {"sdf": "/home/screener/files/vina_px/docking/testo/dock/testo/testo_0.sdf", "pdbqt": "/home/screener/files/vina_px/docking/testo/dock/testo/testo_0.pdbqt", "energy": 
